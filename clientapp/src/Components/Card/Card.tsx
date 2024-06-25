@@ -1,15 +1,19 @@
 import React from "react";
 import "./Card.css";
 
-interface IProps {}
+interface IProps {
+    companyName: string;
+    ticker: string;
+    price: number;
+}
 
 const Card = (props: IProps) => {
     return (
         <div className="card">
             <img src="" alt="Image" />
             <div className="details">
-                <h2>AAPL</h2>
-                <p>$110</p>
+                <h2>{`${props.ticker}`}</h2>
+                <p>{`${props.price}`}</p>
             </div>
             <p className="info">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugit, voluptates!</p>
         </div>
