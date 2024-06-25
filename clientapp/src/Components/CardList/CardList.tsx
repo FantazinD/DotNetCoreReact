@@ -1,10 +1,17 @@
 import React from "react";
 import "./CardList.css";
+import Card from "../Card/Card";
 
-type Props = {};
+interface IProps {}
 
-const CardList = (props: Props) => {
-    return <div>CardList</div>;
+const CardList = (props: IProps) => {
+    return (
+        <div>
+            <Card />
+            <Card />
+            <Card />
+        </div>
+    );
 };
 
 export default CardList;

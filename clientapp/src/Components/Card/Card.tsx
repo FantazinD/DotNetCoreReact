@@ -1,9 +1,9 @@
 import React from "react";
 import "./Card.css";
 
-type Props = {};
+interface IProps {}
 
-const Card = (props: Props) => {
+const Card = (props: IProps) => {
     return (
         <div className="card">
             <img src="" alt="Image" />
