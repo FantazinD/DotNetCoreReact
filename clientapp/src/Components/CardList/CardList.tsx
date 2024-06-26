@@ -4,7 +4,7 @@ import Card from "../Card/Card";
 
 interface IProps {}
 
-const CardList = (props: IProps) => {
+const CardList: React.FC<IProps> = (props: IProps): JSX.Element => {
     return (
         <div>
             <Card companyName="Apple" ticker="AAPL" price={100} />
