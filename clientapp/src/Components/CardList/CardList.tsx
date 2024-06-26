@@ -2,9 +2,9 @@ import React from "react";
 import "./CardList.css";
 import Card from "../Card/Card";
 
-interface IProps {}
+interface Props {}
 
-const CardList: React.FC<IProps> = (props: IProps): JSX.Element => {
+const CardList: React.FC<Props> = (props: Props): JSX.Element => {
     return (
         <div>
             <Card companyName="Apple" ticker="AAPL" price={100} />

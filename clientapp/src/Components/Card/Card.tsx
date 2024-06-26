@@ -1,13 +1,13 @@
 import React from "react";
 import "./Card.css";
 
-interface IProps {
+interface Props {
     companyName: string;
     ticker: string;
     price: number;
 }
 
-const Card: React.FC<IProps> = (props: IProps): JSX.Element => {
+const Card: React.FC<Props> = (props: Props): JSX.Element => {
     return (
         <div className="card">
             <img src="" alt="Image" />
