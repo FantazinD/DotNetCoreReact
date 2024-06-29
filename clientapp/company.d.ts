@@ -1,4 +1,4 @@
-export interface CompanySearch {
+export interface ICompanySearch {
     currency: string;
     exchangeShortName: string;
     name: string;
@@ -6,7 +6,7 @@ export interface CompanySearch {
     symbol: string;
 }
 
-export interface CompanyProfile {
+export interface ICompanyProfile {
     symbol: string;
     price: number;
     beta: number;
@@ -44,7 +44,7 @@ export interface CompanyProfile {
     isFund: boolean;
 }
 
-export interface CompanyKeyRatios {
+export interface ICompanyKeyRatios {
     dividendYielTTM: number;
     dividendYielPercentageTTM: number;
     peRatioTTM: number;
@@ -105,7 +105,7 @@ export interface CompanyKeyRatios {
     dividendPerShareTTM: number;
 }
 
-export interface CompanyIncomeStatement {
+export interface ICompanyIncomeStatement {
     date: string;
     symbol: string;
     reportedCurrency: string;
@@ -146,7 +146,7 @@ export interface CompanyIncomeStatement {
     finalLink: string;
 }
 
-export interface CompanyBalanceSheet {
+export interface ICompanyBalanceSheet {
     date: string;
     symbol: string;
     reportedCurrency: string;
@@ -203,7 +203,7 @@ export interface CompanyBalanceSheet {
     finalLink: string;
 }
 
-export interface CompanyCashFlow {
+export interface ICompanyCashFlow {
     date: string;
     symbol: string;
     reportedCurrency: string;
