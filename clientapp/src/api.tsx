@@ -6,7 +6,6 @@ interface ISearchResponse {
 }
 
 export const searchCompanies = async (query: string) => {
-    console.log(`${process.env.REACT_APP_API_KEY}`);
     try {
         const data = await axios.get<ISearchResponse>(
             `https://financialmodelingprep.com/api/v3/search?query=${query}&limit=10&exchange=NASDAQ&apikey=${process.env.REACT_APP_API_KEY}`

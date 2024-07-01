@@ -1,17 +1,35 @@
 import React from "react";
 import "./CardList.css";
 import Card from "../Card/Card";
+import { ICompanySearch } from "../../company";
+import { v4 as uuidv4 } from "uuid";
 
-interface Props {}
+interface IProps {
+    searchResults: ICompanySearch[];
+}
 
-const CardList: React.FC<Props> = (props: Props): JSX.Element => {
+const CardList: React.FC<IProps> = ({ searchResults }: IProps): JSX.Element => {
     return (
         <div>
-            <Card companyName="Apple" ticker="AAPL" price={100} />
-            <Card companyName="Microsoft" ticker="MSFT" price={200} />
-            <Card companyName="Tesla" ticker="TSLA" price={300} />
+            {searchResults.length > 0 ? (
+                <>
+                    {searchResults.map((result: ICompanySearch) => {
+                        return <Card id={result.symbol} key={uuidv4()} searchResult={result} />;
+                    })}
+                </>
+            ) : (
+                <h1>No Results!</h1>
+            )}
         </div>
     );
 };
 
 export default CardList;
+
+// {searchResults.map((companySearchResult) => (
+//     <Card
+//         companyName={companySearchResult.name}
+//         ticker={companySearchResult.symbol}
+//         price={companySearchResult.currency}
+//     />
+// ))}

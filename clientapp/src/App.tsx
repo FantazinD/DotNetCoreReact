@@ -29,7 +29,7 @@ function App() {
         <div className="App">
             <Search onClick={onClick} search={search} handleChange={handleChange} />
             {serverError && <h1>{serverError}</h1>}
-            <CardList />
+            <CardList searchResults={searchResult} />
         </div>
     );
 }
