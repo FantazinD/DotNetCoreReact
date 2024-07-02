@@ -1,6 +1,7 @@
 import React from "react";
 import "./Card.css";
 import { ICompanySearch } from "../../company";
+import AddPortfolio from "../Portfolio/AddPortfolio/AddPortfolio";
 
 interface IProps {
     id: string;
@@ -18,6 +19,7 @@ const Card: React.FC<IProps> = ({ searchResult }: IProps): JSX.Element => {
             <p className="info">
                 {searchResult.exchangeShortName} - {searchResult.stockExchange}
             </p>
+            <AddPortfolio />
         </div>
     );
 };
