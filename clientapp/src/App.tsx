@@ -27,18 +27,27 @@ function App() {
         }
     };
 
+    const onPortfolioDelete = (e: any) => {
+        e.preventDefault();
+        console.log(e);
+        const updatedPortfolioValues = portfolioValues.filter((value: string) => {
+            return value !== e.target[0].value;
+        });
+        setPortfolioValues(updatedPortfolioValues);
+    };
+
     const onPortfolioCreate = (e: any) => {
         e.preventDefault();
         const exists = portfolioValues.find((value: string) => value === e.target[0].value);
         if (exists) return;
-        const updatedPortfolio = [...portfolioValues, e.target[0].value];
-        setPortfolioValues(updatedPortfolio);
+        const updatedPortfolioValues = [...portfolioValues, e.target[0].value];
+        setPortfolioValues(updatedPortfolioValues);
     };
 
     return (
         <div className="App">
             <Search onSearchSubmit={onSearchSubmit} search={search} handleSearchChange={handleSearchChange} />
-            <ListPortfolio portfolioValues={portfolioValues} />
+            <ListPortfolio portfolioValues={portfolioValues} onPortfolioDelete={onPortfolioDelete} />
             <CardList searchResults={searchResult} onPortfolioCreate={onPortfolioCreate} />
             {serverError && <h1>{serverError}</h1>}
         </div>
