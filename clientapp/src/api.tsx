@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ICompanySearch } from "./company";
+import { ICompanyProfile, ICompanySearch } from "./company";
 
 interface ISearchResponse {
     data: ICompanySearch[];
@@ -19,5 +19,23 @@ export const searchCompanies = async (query: string) => {
             console.log("unexpected error: ", error);
             return "An expected error has occured.";
         }
+    }
+};
+
+export const getCompanyProfile = async (query: string) => {
+    try {
+        const data = await axios.get<ICompanyProfile[]>(
+            `https://financialmodelingprep.com/api/v3/profile/${query}?apikey=${process.env.REACT_APP_API_KEY}`
+        );
+        return data;
+    } catch (error: any) {
+        console.log("error message: ", error.message);
+        // if (axios.isAxiosError(error)) {
+        //     console.log("error message: ", error.message);
+        //     return error.message;
+        // } else {
+        //     console.log("unexpected error: ", error);
+        //     return "An expected error has occured.";
+        // }
     }
 };
