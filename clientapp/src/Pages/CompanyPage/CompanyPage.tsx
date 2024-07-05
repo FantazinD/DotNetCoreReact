@@ -56,7 +56,7 @@ const CompanyPage = ({}: IProps) => {
                         setActiveSideBarItem={setActiveSideBarItem}
                         activeSidebarItem={activeSidebarItem!}
                     />
-                    <CompanyDashboard tabItems={tabItems} activeSidebarItem={activeSidebarItem!}>
+                    <CompanyDashboard ticker={ticker!}>
                         <Tile title="Company Name" content={company.companyName} />
                         <Tile title="DCF" content={company.dcf.toString()} />
                         <Tile title="Dividend" content={company.lastDiv.toString()} />
