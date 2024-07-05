@@ -1,46 +1,33 @@
 import "./Table.css";
-import React from "react";
-import { testIncomeStatementData } from "./testData";
 
-interface IProps {}
-const data = testIncomeStatementData;
-type Company = (typeof data)[0];
+interface IProps {
+    config: any;
+    data: any;
+}
 
-const configs = [
-    {
-        label: "Year",
-        render: (company: Company) => company.calendarYear,
-    },
-    {
-        label: "Cost of Revenue",
-        render: (company: Company) => company.costOfRevenue,
-    },
-];
-
-const Table = ({}: IProps) => {
-    const renderedRows = data.map((company) => {
+const Table = ({ config, data }: IProps) => {
+    const renderedRows = data.map((company: any) => {
         return (
             <tr key={company.cik}>
-                <td className="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
-                    {configs[0].render(company)}
-                </td>
-                <td className="p-3">{configs[1].render(company)}</td>
+                {config.map((val: any) => {
+                    return <td className="p-3">{val.render(company)}</td>;
+                })}
             </tr>
         );
     });
-    const renderedHeaders = configs.map((config) => {
+
+    const renderedHeaders = config.map((config: any) => {
         return (
             <th className="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" key={config.label}>
                 {config.label}
             </th>
         );
     });
+
     return (
-        <div className="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
+        <div className="bg-white shadow rounded-lg ml-4 mt-4 mb-4 p-4 sm:p-6 h-full">
             <table className="min-w-full divide-y divide-gray-200 m-5">
-                <thead className="bg-gray-50">
-                    <tr>{renderedHeaders}</tr>
-                </thead>
+                <thead className="bg-gray-50">{renderedHeaders}</thead>
                 <tbody>{renderedRows}</tbody>
             </table>
         </div>
