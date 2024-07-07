@@ -308,3 +308,18 @@ export interface ICompanyKeyMetrics {
     dividendPerShareTTM: number;
     debtToMarketCapTTM: number;
 }
+
+export interface IDividend {
+    date: string;
+    label: string;
+    adjDividend: number;
+    dividend: number;
+    recordDate: string;
+    paymentDate: string;
+    declarationDate: string;
+}
+
+export interface ICompanyHistoricalDividend {
+    symbol: string;
+    historical: IDividend[];
+}
