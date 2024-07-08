@@ -5,6 +5,8 @@ import { getCompanyProfile } from "../../api";
 import Sidebar from "../../Components/Sidebar/Sidebar";
 import CompanyDashboard from "../../Components/CompanyDashboard/CompanyDashboard";
 import Tile from "../../Components/Tile/Tile";
+import Spinner from "../../Components/Spinner/Spinner";
+import TenKFinder from "../../Components/TenKFinder/TenKFinder";
 
 interface IProps {}
 
@@ -30,11 +32,12 @@ const CompanyPage = ({}: IProps) => {
                         <Tile title="Company Name" content={company.companyName} />
                         <Tile title="Price" content={company.price.toString()} />
                         <Tile title="Sector" content={company.sector} />
-                        <Tile title="Sector" content={company.dcf.toString()} />
+                        <Tile title="DCF" content={company.dcf.toString()} />
+                        <TenKFinder ticker={company.symbol} />
                     </CompanyDashboard>
                 </div>
             ) : (
-                <div>Company Not Found!</div>
+                <Spinner />
             )}
         </>
     );

@@ -4,6 +4,7 @@ import "./CashFlowStatement.css";
 import React, { useEffect, useState } from "react";
 import { getCashFlow } from "../../api";
 import Table from "../Table/Table";
+import Spinner from "../Spinner/Spinner";
 
 interface IProps {}
 
@@ -50,7 +51,7 @@ const CashFlowStatement = ({}: IProps) => {
         fetchCashFlow();
     }, []);
 
-    return cashFlowData ? <Table config={config} data={cashFlowData}></Table> : <h1>No results!</h1>;
+    return cashFlowData ? <Table config={config} data={cashFlowData}></Table> : <Spinner />;
 };
 
 export default CashFlowStatement;

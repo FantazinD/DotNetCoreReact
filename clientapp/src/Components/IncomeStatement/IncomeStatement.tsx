@@ -4,6 +4,7 @@ import "./IncomeStatement.css";
 import { useEffect, useState } from "react";
 import { getIncomeStatement } from "../../api";
 import Table from "../Table/Table";
+import Spinner from "../Spinner/Spinner";
 
 interface IProps {}
 
@@ -42,15 +43,7 @@ const IncomeStatement = ({}: IProps) => {
         fetchIncomeStatement();
     }, []);
 
-    return (
-        <>
-            {incomeStatement ? (
-                <Table config={configs} data={incomeStatement} />
-            ) : (
-                <h1>Could not find income statement.</h1>
-            )}
-        </>
-    );
+    return <>{incomeStatement ? <Table config={configs} data={incomeStatement} /> : <Spinner />}</>;
 };
 
 export default IncomeStatement;

@@ -7,6 +7,7 @@ import {
     ICompanyKeyMetrics,
     ICompanyProfile,
     ICompanySearch,
+    ICompanyTenK,
 } from "./company";
 
 interface ISearchResponse {
@@ -96,6 +97,17 @@ export const getCashFlow = async (query: string) => {
     try {
         const data = await axios.get<ICompanyCashFlow[]>(
             `https://financialmodelingprep.com/api/v3/cash-flow-statement/${query}?limit=100&apikey=${process.env.REACT_APP_API_KEY}`
+        );
+        return data;
+    } catch (error: any) {
+        console.log("error message: ", error.message);
+    }
+};
+
+export const getTenK = async (query: string) => {
+    try {
+        const data = await axios.get<ICompanyTenK[]>(
+            `https://financialmodelingprep.com/api/v3/sec_filings/${query}?type=10-K&page=0&apikey=${process.env.REACT_APP_API_KEY}`
         );
         return data;
     } catch (error: any) {

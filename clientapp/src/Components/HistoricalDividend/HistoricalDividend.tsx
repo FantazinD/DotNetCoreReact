@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import SimpleLineChart from "../SimpleLineChart/SimpleLineChart";
 import { IDividend } from "../../company";
 import { getHistoricalDividend } from "../../api";
+import Spinner from "../Spinner/Spinner";
 
 interface IProps {}
 
@@ -30,7 +31,7 @@ const HistoricalDividend = ({}: IProps) => {
             {dividend && dividend.length > 0 && dividend !== undefined ? (
                 <SimpleLineChart data={dividend} xAxis="label" dataKey="dividend" />
             ) : (
-                <h1 className="ml-3">Company does not have a dividend!</h1>
+                <Spinner />
             )}
         </>
     );

@@ -323,3 +323,13 @@ export interface ICompanyHistoricalDividend {
     symbol: string;
     historical: IDividend[];
 }
+
+export interface ICompanyTenK {
+    symbol: string;
+    fillingDate: string;
+    acceptedDate: string;
+    cik: string;
+    type: string;
+    link: string;
+    finalLink: string;
+}

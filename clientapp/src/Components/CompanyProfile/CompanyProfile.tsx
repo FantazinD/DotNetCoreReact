@@ -4,6 +4,7 @@ import "./CompanyProfile.css";
 import { useEffect, useState } from "react";
 import { getKeyMetrics } from "../../api";
 import RatioList from "../RatioList/RatioList";
+import Spinner from "../Spinner/Spinner";
 
 interface IProps {}
 
@@ -53,7 +54,7 @@ const CompanyProfile = ({}: IProps) => {
                     <RatioList config={tableConfig} data={companyData} />
                 </>
             ) : (
-                <h1>No data found</h1>
+                <Spinner />
             )}
         </>
     );
