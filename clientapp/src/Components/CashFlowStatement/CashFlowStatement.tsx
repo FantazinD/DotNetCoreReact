@@ -18,20 +18,24 @@ const config = [
         render: (company: ICompanyCashFlow) => company.operatingCashFlow,
     },
     {
-        label: "Property/Machinery Cashflow",
-        render: (company: ICompanyCashFlow) => company.investmentsInPropertyPlantAndEquipment,
+        label: "Investing Cashflow",
+        render: (company: ICompanyCashFlow) => company.netCashUsedForInvestingActivites,
     },
     {
-        label: "Other Investing Cashflow",
-        render: (company: ICompanyCashFlow) => company.otherInvestingActivites,
-    },
-    {
-        label: "Debt Cashflow",
+        label: "Financing Cashflow",
         render: (company: ICompanyCashFlow) => company.netCashUsedProvidedByFinancingActivities,
+    },
+    {
+        label: "Cash At End of Period",
+        render: (company: ICompanyCashFlow) => company.cashAtEndOfPeriod,
     },
     {
         label: "CapEX",
         render: (company: ICompanyCashFlow) => company.capitalExpenditure,
+    },
+    {
+        label: "Issuance Of Stock",
+        render: (company: ICompanyCashFlow) => company.commonStockIssued,
     },
     {
         label: "Free Cash Flow",

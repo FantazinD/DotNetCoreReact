@@ -10,24 +10,24 @@ interface IProps {}
 
 const config = [
     {
-        label: "Cash",
+        label: <div className="font-bold">Total Assets</div>,
+        render: (company: ICompanyBalanceSheet) => company.totalAssets,
+    },
+    {
+        label: "Current Assets",
+        render: (company: ICompanyBalanceSheet) => company.totalCurrentAssets,
+    },
+    {
+        label: "Total Cash",
         render: (company: ICompanyBalanceSheet) => company.cashAndCashEquivalents,
     },
     {
-        label: "Inventory",
-        render: (company: ICompanyBalanceSheet) => company.inventory,
+        label: "Property & equipment",
+        render: (company: ICompanyBalanceSheet) => company.propertyPlantEquipmentNet,
     },
     {
-        label: "Other Current Assets",
-        render: (company: ICompanyBalanceSheet) => company.otherCurrentAssets,
-    },
-    {
-        label: "Minority Interest",
-        render: (company: ICompanyBalanceSheet) => company.minorityInterest,
-    },
-    {
-        label: "Other Non-Current Assets",
-        render: (company: ICompanyBalanceSheet) => company.otherNonCurrentAssets,
+        label: "Intangible Assets",
+        render: (company: ICompanyBalanceSheet) => company.intangibleAssets,
     },
     {
         label: "Long Term Debt",
@@ -36,6 +36,30 @@ const config = [
     {
         label: "Total Debt",
         render: (company: ICompanyBalanceSheet) => company.otherCurrentLiabilities,
+    },
+    {
+        label: <div className="font-bold">Total Liabilites</div>,
+        render: (company: ICompanyBalanceSheet) => company.totalLiabilities,
+    },
+    {
+        label: "Current Liabilities",
+        render: (company: ICompanyBalanceSheet) => company.totalCurrentLiabilities,
+    },
+    {
+        label: "Long-Term Debt",
+        render: (company: ICompanyBalanceSheet) => company.longTermDebt,
+    },
+    {
+        label: "Long-Term Income Taxes",
+        render: (company: ICompanyBalanceSheet) => company.otherLiabilities,
+    },
+    {
+        label: "Stakeholder's Equity",
+        render: (company: ICompanyBalanceSheet) => company.totalStockholdersEquity,
+    },
+    {
+        label: "Retained Earnings",
+        render: (company: ICompanyBalanceSheet) => company.retainedEarnings,
     },
 ];
 

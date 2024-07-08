@@ -14,20 +14,52 @@ const configs = [
         render: (company: ICompanyIncomeStatement) => company.date,
     },
     {
-        label: "Total Revenue",
+        label: "Revenue",
         render: (company: ICompanyIncomeStatement) => company.revenue,
+    },
+    {
+        label: "Cost Of Revenue",
+        render: (company: ICompanyIncomeStatement) => company.costOfRevenue,
+    },
+    {
+        label: "Depreciation",
+        render: (company: ICompanyIncomeStatement) => company.depreciationAndAmortization,
+    },
+    {
+        label: "Operating Income",
+        render: (company: ICompanyIncomeStatement) => company.operatingIncome,
+    },
+    {
+        label: "Income Before Taxes",
+        render: (company: ICompanyIncomeStatement) => company.incomeBeforeTax,
     },
     {
         label: "Net Income",
         render: (company: ICompanyIncomeStatement) => company.netIncome,
     },
     {
-        label: "Operating Expenses",
-        render: (company: ICompanyIncomeStatement) => company.operatingExpenses,
+        label: "Net Income Ratio",
+        render: (company: ICompanyIncomeStatement) => company.netIncomeRatio,
     },
     {
-        label: "Cost of Revenue",
-        render: (company: ICompanyIncomeStatement) => company.netIncome,
+        label: "Earnings Per Share",
+        render: (company: ICompanyIncomeStatement) => company.eps,
+    },
+    {
+        label: "Earnings Per Diluted",
+        render: (company: ICompanyIncomeStatement) => company.epsdiluted,
+    },
+    {
+        label: "Gross Profit Ratio",
+        render: (company: ICompanyIncomeStatement) => company.grossProfitRatio,
+    },
+    {
+        label: "Opearting Income Ratio",
+        render: (company: ICompanyIncomeStatement) => company.operatingIncomeRatio,
+    },
+    {
+        label: "Income Before Taxes Ratio",
+        render: (company: ICompanyIncomeStatement) => company.incomeBeforeTaxRatio,
     },
 ];
 
