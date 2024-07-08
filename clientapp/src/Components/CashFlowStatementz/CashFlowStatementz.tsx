@@ -1,6 +1,6 @@
 import { useOutletContext } from "react-router-dom";
 import { ICompanyCashFlow } from "../../company";
-import "./CashflowStatement.css";
+import "./CashFlowStatement.css";
 import React, { useEffect, useState } from "react";
 import { getCashFlow } from "../../api";
 import Table from "../Table/Table";
