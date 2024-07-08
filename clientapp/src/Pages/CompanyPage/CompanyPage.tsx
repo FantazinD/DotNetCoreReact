@@ -30,9 +30,9 @@ const CompanyPage = ({}: IProps) => {
                     <Sidebar />
                     <CompanyDashboard ticker={ticker!}>
                         <Tile title="Company Name" content={company.companyName} />
-                        <Tile title="Price" content={company.price.toString()} />
+                        <Tile title="Price" content={`$${company.price}`} />
+                        <Tile title="DCF" content={`$${company.dcf}`} />
                         <Tile title="Sector" content={company.sector} />
-                        <Tile title="DCF" content={company.dcf.toString()} />
                         <TenKFinder ticker={company.symbol} />
                     </CompanyDashboard>
                 </div>

@@ -5,41 +5,43 @@ import React, { useEffect, useState } from "react";
 import { getCashFlow } from "../../api";
 import Table from "../Table/Table";
 import Spinner from "../Spinner/Spinner";
+import { formatLargeMonetaryNumber } from "../../Helpers/NumberFormatting";
 
 interface IProps {}
 
-const config = [
+const tableConfig = [
     {
         label: "Date",
         render: (company: ICompanyCashFlow) => company.date,
     },
     {
         label: "Operating Cashflow",
-        render: (company: ICompanyCashFlow) => company.operatingCashFlow,
+        render: (company: ICompanyCashFlow) => formatLargeMonetaryNumber(company.operatingCashFlow),
     },
     {
         label: "Investing Cashflow",
-        render: (company: ICompanyCashFlow) => company.netCashUsedForInvestingActivites,
+        render: (company: ICompanyCashFlow) => formatLargeMonetaryNumber(company.netCashUsedForInvestingActivites),
     },
     {
         label: "Financing Cashflow",
-        render: (company: ICompanyCashFlow) => company.netCashUsedProvidedByFinancingActivities,
+        render: (company: ICompanyCashFlow) =>
+            formatLargeMonetaryNumber(company.netCashUsedProvidedByFinancingActivities),
     },
     {
         label: "Cash At End of Period",
-        render: (company: ICompanyCashFlow) => company.cashAtEndOfPeriod,
+        render: (company: ICompanyCashFlow) => formatLargeMonetaryNumber(company.cashAtEndOfPeriod),
     },
     {
         label: "CapEX",
-        render: (company: ICompanyCashFlow) => company.capitalExpenditure,
+        render: (company: ICompanyCashFlow) => formatLargeMonetaryNumber(company.capitalExpenditure),
     },
     {
         label: "Issuance Of Stock",
-        render: (company: ICompanyCashFlow) => company.commonStockIssued,
+        render: (company: ICompanyCashFlow) => formatLargeMonetaryNumber(company.commonStockIssued),
     },
     {
         label: "Free Cash Flow",
-        render: (company: ICompanyCashFlow) => company.freeCashFlow,
+        render: (company: ICompanyCashFlow) => formatLargeMonetaryNumber(company.freeCashFlow),
     },
 ];
 
@@ -55,7 +57,7 @@ const CashFlowStatement = ({}: IProps) => {
         fetchCashFlow();
     }, []);
 
-    return cashFlowData ? <Table config={config} data={cashFlowData}></Table> : <Spinner />;
+    return cashFlowData ? <Table config={tableConfig} data={cashFlowData}></Table> : <Spinner />;
 };
 
 export default CashFlowStatement;
