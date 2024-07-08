@@ -10,12 +10,12 @@ interface IProps {}
 const HistoricalDividend = ({}: IProps) => {
     const ticker = useOutletContext<string>();
     const [dividend, setDividend] = useState<IDividend[]>();
-    useState<boolean>(false);
+
     useEffect(() => {
         const fetchHistoricalDividend = async () => {
-            const value = await getHistoricalDividend(ticker);
+            const result = await getHistoricalDividend(ticker);
             setDividend(
-                value?.data.historical.slice(0, 18).sort(function (a, b) {
+                result?.data.historical.slice(0, 18).sort(function (a, b) {
                     var c = new Date(a.date);
                     var d = new Date(b.date);
                     return c.getTime() - d.getTime();
@@ -24,6 +24,7 @@ const HistoricalDividend = ({}: IProps) => {
         };
         fetchHistoricalDividend();
     }, []);
+
     return (
         <>
             {dividend && dividend.length > 0 && dividend !== undefined ? (

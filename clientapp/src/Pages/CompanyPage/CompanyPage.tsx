@@ -28,6 +28,9 @@ const CompanyPage = ({}: IProps) => {
                     <Sidebar />
                     <CompanyDashboard ticker={ticker!}>
                         <Tile title="Company Name" content={company.companyName} />
+                        <Tile title="Price" content={company.price.toString()} />
+                        <Tile title="Sector" content={company.sector} />
+                        <Tile title="Sector" content={company.dcf.toString()} />
                     </CompanyDashboard>
                 </div>
             ) : (

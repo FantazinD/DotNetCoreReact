@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { FaHome, FaList } from "react-icons/fa";
+import { FaHome, FaList, FaMoneyBill } from "react-icons/fa";
 import { LuFileSpreadsheet } from "react-icons/lu";
 import { SlGraph } from "react-icons/sl";
 import "./Sidebar.css";
@@ -32,6 +32,13 @@ const Sidebar = ({}: IProps) => {
                         >
                             <LuFileSpreadsheet />
                             <h6 className="ml-3">Balance Sheet</h6>
+                        </Link>
+                        <Link
+                            to="cashflow-statement"
+                            className="flex md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline"
+                        >
+                            <FaMoneyBill />
+                            <h6 className="ml-3">Cashflow Statement</h6>
                         </Link>
                         <Link
                             to="historical-dividend"

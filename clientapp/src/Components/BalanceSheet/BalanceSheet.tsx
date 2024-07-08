@@ -44,8 +44,8 @@ const BalanceSheet = ({}: IProps) => {
 
     useEffect(() => {
         const fetchBalanceSheet = async () => {
-            const value = await getBalanceSheet(ticker!);
-            setBalanceSheet(value?.data[0]);
+            const result = await getBalanceSheet(ticker!);
+            setBalanceSheet(result?.data[0]);
         };
         fetchBalanceSheet();
     }, []);

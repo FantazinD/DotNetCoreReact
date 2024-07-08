@@ -1,6 +1,7 @@
 import axios from "axios";
 import {
     ICompanyBalanceSheet,
+    ICompanyCashFlow,
     ICompanyHistoricalDividend,
     ICompanyIncomeStatement,
     ICompanyKeyMetrics,
@@ -84,6 +85,17 @@ export const getHistoricalDividend = async (query: string) => {
     try {
         const data = await axios.get<ICompanyHistoricalDividend>(
             `https://financialmodelingprep.com/api/v3/historical-price-full/stock_dividend/${query}?apikey=${process.env.REACT_APP_API_KEY}`
+        );
+        return data;
+    } catch (error: any) {
+        console.log("error message: ", error.message);
+    }
+};
+
+export const getCashFlow = async (query: string) => {
+    try {
+        const data = await axios.get<ICompanyCashFlow[]>(
+            `https://financialmodelingprep.com/api/v3/cash-flow-statement/${query}?limit=100&apikey=${process.env.REACT_APP_API_KEY}`
         );
         return data;
     } catch (error: any) {

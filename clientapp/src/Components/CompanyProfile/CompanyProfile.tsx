@@ -39,11 +39,11 @@ const CompanyProfile = ({}: IProps) => {
     const [companyData, setCompanyData] = useState<ICompanyKeyMetrics>();
 
     useEffect(() => {
-        const getCompanyKeyRatios = async () => {
-            const value = await getKeyMetrics(ticker);
-            setCompanyData(value?.data[0]);
+        const fetchCompanyKeyRatios = async () => {
+            const result = await getKeyMetrics(ticker);
+            setCompanyData(result?.data[0]);
         };
-        getCompanyKeyRatios();
+        fetchCompanyKeyRatios();
     }, []);
 
     return (
