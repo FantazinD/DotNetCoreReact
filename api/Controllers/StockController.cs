@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using api.Data;
+using api.DTOs.Stock;
 using api.Mappers;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,7 +20,8 @@ namespace api.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAll(){
+        public IActionResult GetAll()
+        {
             var stocks = _context.Stocks.ToList()
                 .Select(stock => stock.ToStockDTO());
 
@@ -27,7 +29,8 @@ namespace api.Controllers
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetById([FromRoute] int id){
+        public IActionResult GetById([FromRoute] int id)
+        {
             var stock = _context.Stocks.Find(id);
 
             if(stock == null){
@@ -35,6 +38,16 @@ namespace api.Controllers
             }
 
             return Ok(stock.ToStockDTO());
+        }
+
+        [HttpPost]
+        public IActionResult Create([FromBody] CreateStockRequestDTO stockDTO)
+        {
+            var stockModel = stockDTO.ToStockFromCreateDTO();
+            _context.Stocks.Add(stockModel);
+            _context.SaveChanges();
+
+            return CreatedAtAction(nameof(GetById), new { id = stockModel.Id }, stockModel.ToStockDTO());
         }
 
     }
