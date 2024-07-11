@@ -14,6 +14,7 @@ namespace api.Controllers
     public class StockController : ControllerBase
     {
         private readonly ApplicationDBContext _context;
+
         public StockController(ApplicationDBContext context)
         {
             _context = context;
@@ -50,5 +51,27 @@ namespace api.Controllers
             return CreatedAtAction(nameof(GetById), new { id = stockModel.Id }, stockModel.ToStockDTO());
         }
 
+        [HttpPut]
+        [Route("{id}")]
+        public IActionResult Update([FromRoute] int id, [FromBody] UpdateStockRequestDTO updateDTO)
+        {
+            var stockModel = _context.Stocks.FirstOrDefault(stock => stock.Id == id);
+
+            if(stockModel == null)
+            {
+                return NotFound();
+            }
+
+            stockModel.Symbol = updateDTO.Symbol;
+            stockModel.CompanyName = updateDTO.CompanyName;
+            stockModel.Purchase = updateDTO.Purchase;
+            stockModel.LastDiv = updateDTO.LastDiv;
+            stockModel.Industry = updateDTO.Industry;
+            stockModel.MarketCap = updateDTO.MarketCap;
+
+            _context.SaveChanges();
+
+            return Ok(stockModel.ToStockDTO());
+        }
     }
 }
