@@ -15,19 +15,17 @@ namespace api.Controllers
     [ApiController]
     public class StockController : ControllerBase
     {
-        private readonly ApplicationDBContext _context;
         private readonly IStockRepository _stockRepository;
 
         public StockController(ApplicationDBContext context, IStockRepository stockRepository)
         {
             _stockRepository = stockRepository;
-            _context = context;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var stocks = await _stockRepository.GettAllAsync();
+            var stocks = await _stockRepository.GetAllAsync();
 
             var stockDTO = stocks.Select(stock => stock.ToStockDTO());
 
