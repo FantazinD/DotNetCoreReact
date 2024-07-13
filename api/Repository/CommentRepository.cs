@@ -22,7 +22,21 @@ namespace api.Repository
         {
             await _context.Comments.AddAsync(commentModel);
             await _context.SaveChangesAsync();
-            
+
+            return commentModel;
+        }
+
+        public async Task<Comment?> DeleteAsync(int commentId)
+        {
+            var commentModel = await _context.Comments.FirstOrDefaultAsync(comment => comment.Id == commentId);
+
+            if(commentModel == null){
+                return null;
+            }
+
+            _context.Comments.Remove(commentModel);
+            await _context.SaveChangesAsync();
+
             return commentModel;
         }
 
@@ -31,9 +45,9 @@ namespace api.Repository
             return await _context.Comments.ToListAsync();
         }
 
-        public async Task<Comment?> GetByIdAsync(int id)
+        public async Task<Comment?> GetByIdAsync(int commentId)
         {
-            return await _context.Comments.FindAsync(id);
+            return await _context.Comments.FindAsync(commentId);
         }
     }
 }
