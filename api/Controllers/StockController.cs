@@ -17,7 +17,7 @@ namespace api.Controllers
     {
         private readonly IStockRepository _stockRepository;
 
-        public StockController(ApplicationDBContext context, IStockRepository stockRepository)
+        public StockController(IStockRepository stockRepository)
         {
             _stockRepository = stockRepository;
         }
