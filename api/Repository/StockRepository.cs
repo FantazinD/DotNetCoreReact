@@ -28,9 +28,9 @@ namespace api.Repository
             return stockModel;
         }
 
-        public async Task<Stock?> DeleteAsync(int id)
+        public async Task<Stock?> DeleteAsync(int stockId)
         {
-            var stockModel = await _context.Stocks.FirstOrDefaultAsync(stock => stock.Id == id);
+            var stockModel = await _context.Stocks.FirstOrDefaultAsync(stock => stock.Id == stockId);
             
             if(stockModel == null)
             {
@@ -42,9 +42,9 @@ namespace api.Repository
             return stockModel;
         }
 
-        public async Task<Stock?> GetByIdAsync(int id)
+        public async Task<Stock?> GetByIdAsync(int stockId)
         {
-            return await _context.Stocks.Include(stock => stock.Comments).FirstOrDefaultAsync(stock => stock.Id == id);
+            return await _context.Stocks.Include(stock => stock.Comments).FirstOrDefaultAsync(stock => stock.Id == stockId);
         }
 
         public async Task<List<Stock>> GetAllAsync()
@@ -52,9 +52,9 @@ namespace api.Repository
             return await _context.Stocks.Include(stock => stock.Comments).ToListAsync();
         }
 
-        public async Task<Stock?> UpdateAsync(int id, UpdateStockRequestDTO stockDTO)
+        public async Task<Stock?> UpdateAsync(int stockId, UpdateStockRequestDTO stockDTO)
         {
-            var stockModel = await _context.Stocks.FirstOrDefaultAsync(stock => stock.Id == id);
+            var stockModel = await _context.Stocks.FirstOrDefaultAsync(stock => stock.Id == stockId);
 
             if(stockModel == null)
             {
@@ -73,9 +73,9 @@ namespace api.Repository
             return stockModel;
         }
 
-        public Task<bool> StockExists(int id)
+        public Task<bool> StockExists(int stockId)
         {
-            return _context.Stocks.AnyAsync(stock => stock.Id == id);
+            return _context.Stocks.AnyAsync(stock => stock.Id == stockId);
         }
     }
 }

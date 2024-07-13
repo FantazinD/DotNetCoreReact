@@ -25,17 +25,22 @@ namespace api.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var comments = await _commentRepository.GetAllAsync();
+            if(!ModelState.IsValid)
+                return BadRequest(ModelState);
 
+            var comments = await _commentRepository.GetAllAsync();
             var commentDTO = comments.Select(comment => comment.ToCommentDTO());
 
             return Ok(comments);
         }
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetById([FromRoute] int id)
+        [HttpGet("{commentId:int}")]
+        public async Task<IActionResult> GetById([FromRoute] int commentId)
         {
-            var commentModel = await _commentRepository.GetByIdAsync(id);
+            if(!ModelState.IsValid)
+                return BadRequest(ModelState);
+                
+            var commentModel = await _commentRepository.GetByIdAsync(commentId);
 
             if(commentModel == null){
                 return NotFound();
@@ -44,9 +49,12 @@ namespace api.Controllers
             return Ok(commentModel.ToCommentDTO());
         }
 
-        [HttpPost("{stockId}")]
+        [HttpPost("{stockId:int}")]
         public async Task<IActionResult> Create([FromRoute] int stockId, CreateCommentRequestDTO commentDTO)
         {
+            if(!ModelState.IsValid)
+                return BadRequest(ModelState);
+                
             if(!await _stockRepository.StockExists(stockId)){
 
                 return BadRequest("Stock does not exist.");
@@ -58,9 +66,12 @@ namespace api.Controllers
             return CreatedAtAction(nameof(GetById), new { id = commentModel }, commentModel.ToCommentDTO());
         }
 
-        [HttpDelete("{commentId}")]
+        [HttpDelete("{commentId:int}")]
         public async Task<IActionResult> Delete([FromRoute] int commentId)
         {
+            if(!ModelState.IsValid)
+                return BadRequest(ModelState);
+                
             var commentModel = await _commentRepository.DeleteAsync(commentId);
 
             if(commentModel == null)
