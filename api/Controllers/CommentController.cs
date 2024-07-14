@@ -28,10 +28,10 @@ namespace api.Controllers
             if(!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var comments = await _commentRepository.GetAllAsync();
-            var commentDTO = comments.Select(comment => comment.ToCommentDTO());
+            var commentModels = await _commentRepository.GetAllAsync();
+            var commentDTO = commentModels.Select(commentModel => commentModel.ToCommentDTO());
 
-            return Ok(comments);
+            return Ok(commentModels);
         }
 
         [HttpGet("{commentId:int}")]
@@ -72,14 +72,14 @@ namespace api.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var comment = await _commentRepository.UpdateAsync(commentId, updateDTO.ToCommentFromUpdateDTO(commentId));
+            var commentModel = await _commentRepository.UpdateAsync(commentId, updateDTO.ToCommentFromUpdateDTO(commentId));
 
-            if (comment == null)
+            if (commentModel == null)
             {
                 return NotFound("Comment not found.");
             }
 
-            return Ok(comment.ToCommentDTO());
+            return Ok(commentModel.ToCommentDTO());
         }
 
         [HttpDelete("{commentId:int}")]

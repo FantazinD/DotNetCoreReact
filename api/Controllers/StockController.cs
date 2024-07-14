@@ -29,10 +29,10 @@ namespace api.Controllers
             if(!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var stocks = await _stockRepository.GetAllAsync(query);
-            var stockDTO = stocks.Select(stock => stock.ToStockDTO());
+            var stockModels = await _stockRepository.GetAllAsync(query);
+            var stockDTO = stockModels.Select(stockModel => stockModel.ToStockDTO());
 
-            return Ok(stocks);
+            return Ok(stockModels);
         }
 
         [HttpGet("{stockId:int}")]
