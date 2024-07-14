@@ -14,14 +14,9 @@ namespace api.Controllers
 {
     [Route("api/stock")]
     [ApiController]
-    public class StockController : ControllerBase
+    public class StockController(IStockRepository stockRepository) : ControllerBase
     {
-        private readonly IStockRepository _stockRepository;
-
-        public StockController(IStockRepository stockRepository)
-        {
-            _stockRepository = stockRepository;
-        }
+        private readonly IStockRepository _stockRepository = stockRepository;
 
         [HttpGet]
         public async Task<IActionResult> GetAll([FromQuery] QueryObject query)

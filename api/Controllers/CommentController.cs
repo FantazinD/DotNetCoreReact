@@ -12,15 +12,10 @@ namespace api.Controllers
 {
     [Route("api/comment")]
     [ApiController]
-    public class CommentController : ControllerBase
+    public class CommentController(ICommentRepository commentRepository, IStockRepository stockRepository) : ControllerBase
     {
-        private readonly ICommentRepository _commentRepository;
-        private readonly IStockRepository _stockRepository;
-        public CommentController(ICommentRepository commentRepository, IStockRepository stockRepository)
-        {
-            _commentRepository = commentRepository;
-            _stockRepository = stockRepository;
-        }
+        private readonly ICommentRepository _commentRepository = commentRepository;
+        private readonly IStockRepository _stockRepository = stockRepository;
 
         [HttpGet]
         public async Task<IActionResult> GetAll()
