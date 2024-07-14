@@ -57,11 +57,10 @@ namespace api.Controllers
                     return StatusCode(500, createdUser.Errors);
                 }
             }
-            catch (Exception)
+            catch (Exception e)
             {
-
+                return StatusCode(500, e);
             }
-            return Ok();
         }
     }
 }
