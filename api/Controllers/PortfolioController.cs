@@ -20,7 +20,7 @@ namespace api.Controllers
         private readonly IPortfolioRepository _portfolioRepository = portfolioRepository;
 
         [HttpGet]
-       // [Authorize]
+        [Authorize]
         public async Task<IActionResult> GetUserPortfolio()
         {
             var username = User.GetUsername();
@@ -28,6 +28,36 @@ namespace api.Controllers
             var userPortfolio = await _portfolioRepository.GetUserPortfolio(appUser);
 
             return Ok(userPortfolio);
+        }
+
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> AddPortfolio(string stockSymbol)
+        {
+            var username = User.GetUsername();
+            var appUser = await _userManager.FindByNameAsync(username);
+            var stock = await _stockRepository.GetBySymbolAsync(stockSymbol);
+
+            if(stock == null) return BadRequest("Stock not found.");
+
+            var userPortfolio = await _portfolioRepository.GetUserPortfolio(appUser);
+
+            if(userPortfolio.Any(e => e.Symbol.ToLower() == stockSymbol.ToLower())) return BadRequest("Cannot add same stock to portfolio.");
+
+            var portfolioModel = new Portfolio
+            {
+                AppUserId = appUser.Id,
+                StockId = stock.Id
+            };
+
+            var result = await _portfolioRepository.CreateAsync(portfolioModel);
+
+            if(result == null)
+            {
+                return StatusCode(500, "Could not add to portfolio.");
+            }
+
+            return Created();
         }
     }
 }
