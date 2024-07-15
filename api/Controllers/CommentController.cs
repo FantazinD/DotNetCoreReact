@@ -5,9 +5,11 @@ using System.Threading.Tasks;
 using api.Data;
 using api.DTOs.Comment;
 using api.Extensions;
+using api.Helpers;
 using api.Interfaces;
 using api.Mappers;
 using api.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -23,12 +25,13 @@ namespace api.Controllers
         private readonly IFMPService _fmpService = fmpService;
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        [Authorize]
+        public async Task<IActionResult> GetAll([FromQuery] CommentQueryObject queryObject)
         {
             if(!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var commentModels = await _commentRepository.GetAllAsync();
+            var commentModels = await _commentRepository.GetAllAsync(queryObject);
             var commentDTO = commentModels.Select(commentModel => commentModel.ToCommentDTO());
 
             return Ok(commentModels);

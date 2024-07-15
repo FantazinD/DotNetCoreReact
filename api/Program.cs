@@ -59,7 +59,7 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(options => {
     options.Password.RequireLowercase = true;
     options.Password.RequireUppercase = true;
     options.Password.RequireNonAlphanumeric = true;
-    options.Password.RequiredLength = 12;
+    options.Password.RequiredLength = 5;
 }).AddEntityFrameworkStores<ApplicationDBContext>();
 
 builder.Services.AddAuthentication(options => {
@@ -100,6 +100,14 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors(x => x
+    .AllowAnyMethod()
+    .AllowAnyHeader()
+    .AllowCredentials()
+    //.WithOrigins("https://localhost:44351")
+    .SetIsOriginAllowed(origin => true)
+);
 
 app.UseAuthentication();
 app.UseAuthorization();
