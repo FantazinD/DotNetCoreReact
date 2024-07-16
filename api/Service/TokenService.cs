@@ -7,15 +7,10 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace api.Service
 {
-    public class TokenService : ITokenService
+    public class TokenService(IConfiguration config) : ITokenService
     {
-        private readonly IConfiguration _config;
-        private readonly SymmetricSecurityKey _key;
-        public TokenService(IConfiguration config)
-        {
-            _config = config;
-            _key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["JWT:SigningKey"]));
-        }
+        private readonly IConfiguration _config = config;
+        private readonly SymmetricSecurityKey _key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["JWT:SigningKey"]));
         public string CreateToken(AppUser user)
         {
             var claims = new List<Claim>

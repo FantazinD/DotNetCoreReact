@@ -33,6 +33,7 @@ namespace api.Controllers
         }
 
         [HttpGet("{commentId:int}")]
+        [Authorize]
         public async Task<IActionResult> GetById([FromRoute] int commentId)
         {
             if(!ModelState.IsValid)
@@ -48,6 +49,7 @@ namespace api.Controllers
         }
 
         [HttpPost("{stockSymbol:alpha}")]
+        [Authorize]
         public async Task<IActionResult> Create([FromRoute] string stockSymbol, CreateCommentRequestDTO commentDTO)
         {
             if(!ModelState.IsValid)
@@ -97,6 +99,7 @@ namespace api.Controllers
         }
 
         [HttpDelete("{commentId:int}")]
+        [Authorize]
         public async Task<IActionResult> Delete([FromRoute] int commentId)
         {
             if(!ModelState.IsValid)
