@@ -39,13 +39,6 @@ export const getCompanyProfile = async (query: string) => {
         return data;
     } catch (error: any) {
         console.log("error message: ", error.message);
-        // if (axios.isAxiosError(error)) {
-        //     console.log("error message: ", error.message);
-        //     return error.message;
-        // } else {
-        //     console.log("unexpected error: ", error);
-        //     return "An expected error has occured.";
-        // }
     }
 };
 

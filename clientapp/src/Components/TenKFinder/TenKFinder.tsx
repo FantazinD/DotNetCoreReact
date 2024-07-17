@@ -24,7 +24,12 @@ const TenKFinder = ({ ticker }: IProps) => {
         <div className="inline-flex rounded-md shadow-sm m-4" role="group">
             {companyData ? (
                 companyData?.slice(0, 5).map((companyDatum: ICompanyTenK) => {
-                    return <TenKFinderItem tenK={companyDatum} />;
+                    return (
+                        <TenKFinderItem
+                            key={`${companyDatum.symbol}-${companyDatum.fillingDate}`}
+                            tenK={companyDatum}
+                        />
+                    );
                 })
             ) : (
                 <Spinner />
