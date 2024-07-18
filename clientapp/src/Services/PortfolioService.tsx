@@ -9,6 +9,8 @@ export const portfolioGetAPI = async () => {
     try {
         const data = await axios.get<PortfolioGet[]>(`${api}`);
 
+        console.log(data);
+
         return data;
     } catch (error) {
         handleError(error);
@@ -28,6 +30,8 @@ export const portfolioAddAPI = async (symbol: string) => {
 export const portfolioDeleteAPI = async (symbol: string) => {
     try {
         const data = await axios.delete<PortfolioPost>(`${api}?stockSymbol=${symbol}`);
+
+        console.log(data);
 
         return data;
     } catch (error) {

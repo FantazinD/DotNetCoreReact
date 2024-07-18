@@ -11,6 +11,9 @@ export const commentPostAPI = async (title: string, content: string, stockSymbol
             content: content,
             stockSymbol: stockSymbol,
         });
+
+        console.log(data);
+
         return data;
     } catch (error) {
         handleError(error);
@@ -20,6 +23,9 @@ export const commentPostAPI = async (title: string, content: string, stockSymbol
 export const commentGetAPI = async (stockSymbol: string) => {
     try {
         const data = await axios.get<CommentGet[]>(`${api}?Symbol=${stockSymbol}`);
+
+        console.log(data);
+
         return data;
     } catch (error) {
         handleError(error);

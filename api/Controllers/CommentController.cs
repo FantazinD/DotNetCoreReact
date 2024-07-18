@@ -79,7 +79,10 @@ namespace api.Controllers
 
             await _commentRepository.CreateAsync(commentModel);
 
-            return CreatedAtAction(nameof(GetById), new { id = commentModel }, commentModel.ToCommentDTO());
+            var hehe = nameof(GetById);
+            hehe.AsQueryable();
+
+            return CreatedAtAction(nameof(GetById), new { commentId = commentModel.Id }, commentModel.ToCommentDTO());
         }
 
         [HttpPut("{commentId:int}")]

@@ -21,7 +21,6 @@ const StockComment = ({ stockSymbol }: IProps) => {
     const [isLoading, setIsLoading] = useState<boolean>(true);
 
     useEffect(() => {
-        toast.success("Comment created successfully!");
         getComments();
     }, []);
 
@@ -30,6 +29,7 @@ const StockComment = ({ stockSymbol }: IProps) => {
             .then((res) => {
                 if (res) {
                     toast.success("Comment created successfully!");
+                    getComments();
                 }
             })
             .catch((e) => {
