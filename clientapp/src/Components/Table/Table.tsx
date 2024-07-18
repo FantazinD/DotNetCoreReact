@@ -1,4 +1,5 @@
 import "./Table.css";
+import { v4 as uuidv4 } from "uuid";
 
 interface IProps {
     config: any;
@@ -8,7 +9,7 @@ interface IProps {
 const Table = ({ config, data }: IProps) => {
     const renderedRows = data.map((company: any) => {
         return (
-            <tr key={company.cik}>
+            <tr key={uuidv4()}>
                 {config.map((val: any) => {
                     return <td className="p-3">{val.render(company)}</td>;
                 })}

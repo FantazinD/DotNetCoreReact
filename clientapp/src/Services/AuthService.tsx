@@ -11,8 +11,6 @@ export const loginAPI = async (username: string, password: string) => {
             password: password,
         });
 
-        console.log(data);
-
         return data;
     } catch (error) {
         handleError(error);
@@ -26,8 +24,6 @@ export const registerAPI = async (username: string, email: string, password: str
             username: username,
             password: password,
         });
-
-        console.log(data);
 
         return data;
     } catch (error) {
