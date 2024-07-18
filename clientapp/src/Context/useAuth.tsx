@@ -59,6 +59,11 @@ export const UserProvider = ({ children }: Props) => {
     const loginUser = async (username: string, password: string) => {
         await loginAPI(username, password)
             .then((response: any) => {
+                if (!response) {
+                    toast.warning("Incorrect username and/or password!");
+                    return;
+                }
+
                 localStorage.setItem("token", response?.data.token);
 
                 const userObj = {
