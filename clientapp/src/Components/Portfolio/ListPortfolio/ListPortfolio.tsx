@@ -2,6 +2,7 @@ import React, { SyntheticEvent } from "react";
 import "./ListPortfolio.css";
 import CardPortfolio from "../CardPortfolio/CardPortfolio";
 import { PortfolioGet } from "../../../Models/Portfolio";
+import { v4 as uuidv4 } from "uuid";
 
 interface IProps {
     portfolioValues: PortfolioGet[];
@@ -18,7 +19,7 @@ const ListPortfolio = ({ portfolioValues, onPortfolioDelete }: IProps) => {
                         portfolioValues.map((portfolioValue) => {
                             return (
                                 <CardPortfolio
-                                    key={portfolioValue.symbol}
+                                    key={uuidv4()}
                                     portfolioValue={portfolioValue}
                                     onPortfolioDelete={onPortfolioDelete}
                                 />

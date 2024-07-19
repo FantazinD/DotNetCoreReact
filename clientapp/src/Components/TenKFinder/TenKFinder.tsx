@@ -4,6 +4,7 @@ import "./TenKFinder.css";
 import React, { useEffect, useState } from "react";
 import TenKFinderItem from "./TenKFinderItem/TenKFinderItem";
 import Spinner from "../Spinner/Spinner";
+import { v4 as uuidv4 } from "uuid";
 
 interface IProps {
     ticker: string;
@@ -24,12 +25,7 @@ const TenKFinder = ({ ticker }: IProps) => {
         <div className="inline-flex rounded-md shadow-sm m-4" role="group">
             {companyData ? (
                 companyData?.slice(0, 5).map((companyDatum: ICompanyTenK) => {
-                    return (
-                        <TenKFinderItem
-                            key={`${companyDatum.symbol}-${companyDatum.fillingDate}`}
-                            tenK={companyDatum}
-                        />
-                    );
+                    return <TenKFinderItem key={uuidv4()} tenK={companyDatum} />;
                 })
             ) : (
                 <Spinner />
