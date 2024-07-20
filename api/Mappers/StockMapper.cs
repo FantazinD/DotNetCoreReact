@@ -42,7 +42,7 @@ namespace api.Mappers
                 Purchase = (decimal)fmpStockDTO.price,
                 LastDiv = (decimal)fmpStockDTO.lastDiv,
                 Industry = fmpStockDTO.industry,
-                MarketCap = fmpStockDTO.mktCap
+                MarketCap = (long)fmpStockDTO.mktCap
             };
         }
     }
