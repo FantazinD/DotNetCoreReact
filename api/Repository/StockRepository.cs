@@ -3,7 +3,6 @@ using api.DTOs.Stock;
 using api.Helpers;
 using api.Interfaces;
 using api.Models;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 
 namespace api.Repository
