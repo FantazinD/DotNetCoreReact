@@ -1,6 +1,5 @@
 import { Line, LineChart, ResponsiveContainer, XAxis, YAxis } from "recharts";
 import "./SimpleLineChart.css";
-import React from "react";
 
 interface IProps {
     data: any;

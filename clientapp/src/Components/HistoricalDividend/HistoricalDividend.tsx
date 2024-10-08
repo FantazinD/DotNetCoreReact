@@ -1,6 +1,6 @@
 import { useOutletContext } from "react-router-dom";
 import "./HistoricalDividend.css";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import SimpleLineChart from "../SimpleLineChart/SimpleLineChart";
 import { IDividend } from "../../company";
 import { getHistoricalDividend } from "../../api";

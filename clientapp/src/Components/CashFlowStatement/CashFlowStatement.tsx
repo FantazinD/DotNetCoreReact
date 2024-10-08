@@ -1,7 +1,7 @@
 import { useOutletContext } from "react-router-dom";
 import { ICompanyCashFlow } from "../../company";
 import "./CashFlowStatement.css";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { getCashFlow } from "../../api";
 import Table from "../Table/Table";
 import Spinner from "../Spinner/Spinner";

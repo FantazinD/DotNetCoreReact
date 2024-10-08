@@ -1,4 +1,4 @@
-import React, { SyntheticEvent } from "react";
+import { SyntheticEvent } from "react";
 import "./ListPortfolio.css";
 import CardPortfolio from "../CardPortfolio/CardPortfolio";
 import { PortfolioGet } from "../../../Models/Portfolio";

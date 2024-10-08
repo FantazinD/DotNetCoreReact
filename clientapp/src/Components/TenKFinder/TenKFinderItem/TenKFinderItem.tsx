@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { ICompanyTenK } from "../../../company";
 import "./TenKFinderItem.css";
-import React from "react";
 
 interface IProps {
     tenK: ICompanyTenK;

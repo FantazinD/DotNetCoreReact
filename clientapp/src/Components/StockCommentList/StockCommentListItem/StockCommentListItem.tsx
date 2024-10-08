@@ -1,6 +1,5 @@
 import { CommentGet } from "../../../Models/Comment";
 import "./StockCommentListItem.css";
-import React from "react";
 
 interface IProps {
     comment: CommentGet;

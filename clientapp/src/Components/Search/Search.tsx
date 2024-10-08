@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState, SyntheticEvent, FormEvent } from "react";
+import React, { ChangeEvent, SyntheticEvent } from "react";
 import "./Search.css";
 
 interface Props {
