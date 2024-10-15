@@ -1,5 +1,5 @@
 import { createContext, ReactNode, useContext, useEffect, useState } from "react";
-import { UserProfile, UserProfileToken } from "../Models/User";
+import { UserProfile } from "../Models/User";
 import { useNavigate } from "react-router";
 import { loginAPI, registerAPI } from "../Services/AuthService";
 import { toast } from "react-toastify";

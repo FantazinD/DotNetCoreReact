@@ -50,7 +50,7 @@ const SearchPage = ({}: IProps) => {
         e.preventDefault();
         portfolioDeleteAPI(e.target[0].value)
             .then((res: any) => {
-                if (res?.status == 200) {
+                if (res?.status === 200) {
                     toast.success("Stock deleted from portfolio!");
                     getPortfolio();
                 }
@@ -64,7 +64,7 @@ const SearchPage = ({}: IProps) => {
         e.preventDefault();
         portfolioAddAPI(e.target[0].value)
             .then((res: any) => {
-                if (res?.status == 204) {
+                if (res?.status === 204) {
                     toast.success("Stock added to portfolio!");
                     getPortfolio();
                 }
