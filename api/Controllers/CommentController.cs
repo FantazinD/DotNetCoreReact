@@ -86,6 +86,7 @@ namespace api.Controllers
         }
 
         [HttpPut("{commentId:int}")]
+        [Authorize]
         public async Task<IActionResult> Update([FromRoute] int commentId, [FromBody] UpdateCommentRequestDTO updateDTO)
         {
             if (!ModelState.IsValid)
