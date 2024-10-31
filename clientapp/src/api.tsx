@@ -9,6 +9,7 @@ import {
     ICompanySearch,
     ICompanyTenK,
 } from "./company";
+import config from "./config.json";
 
 interface ISearchResponse {
     data: ICompanySearch[];
@@ -17,7 +18,7 @@ interface ISearchResponse {
 export const searchCompanies = async (query: string) => {
     try {
         const data = await axios.get<ISearchResponse>(
-            `https://financialmodelingprep.com/api/v3/search?query=${query}&limit=10&exchange=NASDAQ&apikey=${process.env.REACT_APP_API_KEY}`
+            `${config.FMP_API_URL}/v3/search?query=${query}&limit=10&exchange=NASDAQ&apikey=${config.REACT_APP_API}`
         );
         return data;
     } catch (error) {
@@ -34,7 +35,7 @@ export const searchCompanies = async (query: string) => {
 export const getCompanyProfile = async (query: string) => {
     try {
         const data = await axios.get<ICompanyProfile[]>(
-            `https://financialmodelingprep.com/api/v3/profile/${query}?apikey=${process.env.REACT_APP_API_KEY}`
+            `${config.FMP_API_URL}/v3/profile/${query}?apikey=${config.REACT_APP_API}`
         );
         return data;
     } catch (error: any) {
@@ -45,7 +46,7 @@ export const getCompanyProfile = async (query: string) => {
 export const getKeyMetrics = async (query: string) => {
     try {
         const data = await axios.get<ICompanyKeyMetrics[]>(
-            `https://financialmodelingprep.com/api/v3/key-metrics-ttm/${query}?limit=40&apikey=${process.env.REACT_APP_API_KEY}`
+            `${config.FMP_API_URL}/v3/key-metrics-ttm/${query}?limit=40&apikey=${config.REACT_APP_API}`
         );
         return data;
     } catch (error: any) {
@@ -56,7 +57,7 @@ export const getKeyMetrics = async (query: string) => {
 export const getIncomeStatement = async (query: string) => {
     try {
         const data = await axios.get<ICompanyIncomeStatement[]>(
-            `https://financialmodelingprep.com/api/v3/income-statement/${query}?limit=40&apikey=${process.env.REACT_APP_API_KEY}`
+            `${config.FMP_API_URL}/v3/income-statement/${query}?limit=40&apikey=${config.REACT_APP_API}`
         );
         return data;
     } catch (error: any) {
@@ -67,7 +68,7 @@ export const getIncomeStatement = async (query: string) => {
 export const getBalanceSheet = async (query: string) => {
     try {
         const data = await axios.get<ICompanyBalanceSheet[]>(
-            `https://financialmodelingprep.com/api/v3/balance-sheet-statement/${query}?limit=40&apikey=${process.env.REACT_APP_API_KEY}`
+            `${config.FMP_API_URL}/v3/balance-sheet-statement/${query}?limit=40&apikey=${config.REACT_APP_API}`
         );
         return data;
     } catch (error: any) {
@@ -78,7 +79,7 @@ export const getBalanceSheet = async (query: string) => {
 export const getHistoricalDividend = async (query: string) => {
     try {
         const data = await axios.get<ICompanyHistoricalDividend>(
-            `https://financialmodelingprep.com/api/v3/historical-price-full/stock_dividend/${query}?apikey=${process.env.REACT_APP_API_KEY}`
+            `${config.FMP_API_URL}/v3/historical-price-full/stock_dividend/${query}?apikey=${config.REACT_APP_API}`
         );
         return data;
     } catch (error: any) {
@@ -89,7 +90,7 @@ export const getHistoricalDividend = async (query: string) => {
 export const getCashFlow = async (query: string) => {
     try {
         const data = await axios.get<ICompanyCashFlow[]>(
-            `https://financialmodelingprep.com/api/v3/cash-flow-statement/${query}?limit=100&apikey=${process.env.REACT_APP_API_KEY}`
+            `${config.FMP_API_URL}/v3/cash-flow-statement/${query}?limit=100&apikey=${config.REACT_APP_API}`
         );
         return data;
     } catch (error: any) {
@@ -100,7 +101,7 @@ export const getCashFlow = async (query: string) => {
 export const getTenK = async (query: string) => {
     try {
         const data = await axios.get<ICompanyTenK[]>(
-            `https://financialmodelingprep.com/api/v3/sec_filings/${query}?type=10-K&page=0&apikey=${process.env.REACT_APP_API_KEY}`
+            `${config.FMP_API_URL}/v3/sec_filings/${query}?type=10-K&page=0&apikey=${config.REACT_APP_API}`
         );
         return data;
     } catch (error: any) {

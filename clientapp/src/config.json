@@ -1,3 +1,5 @@
 {
-    "API_URL": "https://finsharkapi.azurewebsites.net/api"
+    "API_URL": "https://finsharkapi.azurewebsites.net/api",
+    "FMP_API_URL": "https://financialmodelingprep.com/api",
+    "REACT_APP_API": "hVAu7x3jy62tW7MqzFl5NdRsQKZbG34Y"
 }
