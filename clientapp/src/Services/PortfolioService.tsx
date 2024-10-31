@@ -3,15 +3,13 @@ import { handleError } from "../Helpers/ErrorHandler";
 import { PortfolioGet, PortfolioPost } from "../Models/Portfolio";
 import config from "../config.json";
 
-const apiConfig = {
-    headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-    },
-};
-
 export const portfolioGetAPI = async () => {
     try {
-        const data = await axios.get<PortfolioGet[]>(`${config.API_URL}/portfolio`, apiConfig);
+        const data = await axios.get<PortfolioGet[]>(`${config.API_URL}/portfolio`, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+        });
 
         return data;
     } catch (error) {
@@ -21,7 +19,11 @@ export const portfolioGetAPI = async () => {
 
 export const portfolioAddAPI = async (symbol: string) => {
     try {
-        const data = await axios.post<PortfolioPost>(`${config.API_URL}/portfolio?stockSymbol=${symbol}`, apiConfig);
+        const data = await axios.post<PortfolioPost>(`${config.API_URL}/portfolio?stockSymbol=${symbol}`, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+        });
 
         return data;
     } catch (error) {
@@ -31,7 +33,11 @@ export const portfolioAddAPI = async (symbol: string) => {
 
 export const portfolioDeleteAPI = async (symbol: string) => {
     try {
-        const data = await axios.delete<PortfolioPost>(`${config.API_URL}/portfolio?stockSymbol=${symbol}`, apiConfig);
+        const data = await axios.delete<PortfolioPost>(`${config.API_URL}/portfolio?stockSymbol=${symbol}`, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+        });
 
         return data;
     } catch (error) {
