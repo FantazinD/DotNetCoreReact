@@ -18,7 +18,7 @@ const validation = Yup.object().shape({
 });
 
 const LoginPage = ({}: IProps) => {
-    const { loginUser } = useAuth();
+    const { loginUser, isLoading } = useAuth();
     const {
         register,
         handleSubmit,
@@ -32,7 +32,17 @@ const LoginPage = ({}: IProps) => {
     return (
         <section className="bg-gray-50 dark:bg-gray-900">
             <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-                <div className="w-full bg-white rounded-lg shadow dark:border md:mb-20 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+                <div className="w-full bg-white rounded-lg shadow dark:border md:mb-20 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700 relative z-0">
+                    {isLoading && (
+                        <>
+                            <div className="absolute left-0 top-0 z-10 w-full" id="progressBar">
+                                <div className="h-1.5 w-full bg-teal-100 overflow-hidden rounded-t-lg">
+                                    <div className="animate-progress w-full h-full bg-lightGreen origin-left-right"></div>
+                                </div>
+                            </div>
+                            <div className="fixed inset-0 bg-gray-500 opacity-20 z-20"></div> {/* Overlay */}
+                        </>
+                    )}
                     <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
                         <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                             Sign in to your account
