@@ -39,6 +39,7 @@ export const UserProvider = ({ children }: Props) => {
     }, []);
 
     const registerUser = async (email: string, username: string, password: string) => {
+        setIsLoading(true);
         await registerAPI(email, username, password)
             .then((response: any) => {
                 localStorage.setItem("token", response?.data.token);
@@ -55,7 +56,10 @@ export const UserProvider = ({ children }: Props) => {
                 toast.success("Login Success!");
                 navigate("/search");
             })
-            .catch((e) => toast.warning("Server error occurred"));
+            .catch((e) => toast.warning("Server error occurred"))
+            .finally(() => {
+                setIsLoading(false);
+            });
     };
 
     const loginUser = async (username: string, password: string) => {
