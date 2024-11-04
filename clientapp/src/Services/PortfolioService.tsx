@@ -19,7 +19,7 @@ export const portfolioGetAPI = async () => {
 
 export const portfolioAddAPI = async (symbol: string) => {
     try {
-        const data = await axios.post<PortfolioPost>(`${config.API_URL}/portfolio?stockSymbol=${symbol}`, {
+        const data = await axios.post<PortfolioPost>(`${config.API_URL}/portfolio?stockSymbol=${symbol}`, null, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem("token")}`,
             },
