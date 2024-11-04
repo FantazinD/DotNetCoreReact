@@ -39,10 +39,13 @@ const StockComment = ({ stockSymbol }: IProps) => {
 
     const getComments = () => {
         setIsLoading(true);
-        commentGetAPI(stockSymbol).then((res: any) => {
-            setIsLoading(false);
-            setComments(res?.data);
-        });
+        commentGetAPI(stockSymbol)
+            .then((res: any) => {
+                setComments(res?.data);
+            })
+            .finally(() => {
+                setIsLoading(false);
+            });
     };
 
     return (
