@@ -13,7 +13,7 @@ const StockCommentListItem = ({ comment }: IProps) => {
                     <div className="flex flex-row justify-between">
                         <p className="relative text-xl whitespace-nowrap truncate overflow-hidden">{comment.title}</p>
                     </div>
-                    <p className="text-dark text-sm">@{comment.createdBy}</p>
+                    <p className="text-dark text-sm">@{comment.appUser.userName}</p>
                 </div>
             </div>
             <p className="-mt-4 text-gray-500">{comment.content}</p>
