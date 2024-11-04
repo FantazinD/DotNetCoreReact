@@ -5,14 +5,19 @@ import config from "../config.json";
 
 export const commentPostAPI = async (title: string, content: string, stockSymbol: string) => {
     try {
-        const data = await axios.post<CommentPost>(`${config.API_URL}/comment/${stockSymbol}`, {
-            title: title,
-            content: content,
-            stockSymbol: stockSymbol,
-            headers: {
-                Authorization: `Bearer ${localStorage.getItem("token")}`,
+        const data = await axios.post<CommentPost>(
+            `${config.API_URL}/comment/${stockSymbol}`,
+            {
+                title: title,
+                content: content,
+                stockSymbol: stockSymbol,
             },
-        });
+            {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("token")}`,
+                },
+            }
+        );
 
         return data;
     } catch (error) {
