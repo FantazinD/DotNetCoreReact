@@ -10,6 +10,7 @@ import {
     ICompanyTenK,
 } from "./company";
 import config from "./config.json";
+import { handleError } from "./Helpers/ErrorHandler";
 
 interface ISearchResponse {
     data: ICompanySearch[];
@@ -23,10 +24,8 @@ export const searchCompanies = async (query: string) => {
         return data;
     } catch (error) {
         if (axios.isAxiosError(error)) {
-            console.log("error message: ", error.message);
             return error.message;
         } else {
-            console.log("unexpected error: ", error);
             return "An expected error has occured.";
         }
     }
@@ -39,7 +38,7 @@ export const getCompanyProfile = async (query: string) => {
         );
         return data;
     } catch (error: any) {
-        console.log("error message: ", error.message);
+        handleError(error);
     }
 };
 
@@ -50,7 +49,7 @@ export const getKeyMetrics = async (query: string) => {
         );
         return data;
     } catch (error: any) {
-        console.log("error message: ", error.message);
+        handleError(error);
     }
 };
 
@@ -61,7 +60,7 @@ export const getIncomeStatement = async (query: string) => {
         );
         return data;
     } catch (error: any) {
-        console.log("error message: ", error.message);
+        handleError(error);
     }
 };
 
@@ -72,7 +71,7 @@ export const getBalanceSheet = async (query: string) => {
         );
         return data;
     } catch (error: any) {
-        console.log("error message: ", error.message);
+        handleError(error);
     }
 };
 
@@ -83,7 +82,7 @@ export const getHistoricalDividend = async (query: string) => {
         );
         return data;
     } catch (error: any) {
-        console.log("error message: ", error.message);
+        handleError(error);
     }
 };
 
@@ -94,7 +93,7 @@ export const getCashFlow = async (query: string) => {
         );
         return data;
     } catch (error: any) {
-        console.log("error message: ", error.message);
+        handleError(error);
     }
 };
 
@@ -105,6 +104,6 @@ export const getTenK = async (query: string) => {
         );
         return data;
     } catch (error: any) {
-        console.log("error message: ", error.message);
+        handleError(error);
     }
 };
