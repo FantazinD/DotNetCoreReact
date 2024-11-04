@@ -4,8 +4,8 @@ import StockCommentForm from "./StockCommentForm/StockCommentForm";
 import { commentGetAPI, commentPostAPI } from "../../Services/CommentService";
 import { toast } from "react-toastify";
 import { CommentGet } from "../../Models/Comment";
-import Spinner from "../Spinner/Spinner";
 import StockCommentList from "../StockCommentList/StockCommentList";
+import ShimmerComment from "./ShimmerComment/ShimmerComment";
 
 interface IProps {
     stockSymbol: string;
@@ -50,7 +50,7 @@ const StockComment = ({ stockSymbol }: IProps) => {
 
     return (
         <div className="flex flex-col">
-            {isLoading ? <Spinner /> : <StockCommentList comments={comments!} />}
+            {isLoading ? <ShimmerComment></ShimmerComment> : <StockCommentList comments={comments!} />}
             <StockCommentForm stockSymbol={stockSymbol} handleComment={handleComment} />
         </div>
     );
