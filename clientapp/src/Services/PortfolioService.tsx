@@ -18,17 +18,13 @@ export const portfolioGetAPI = async () => {
 };
 
 export const portfolioAddAPI = async (symbol: string) => {
-    try {
-        const data = await axios.post<PortfolioPost>(`${config.API_URL}/portfolio?stockSymbol=${symbol}`, null, {
-            headers: {
-                Authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
-        });
+    const data = await axios.post<PortfolioPost>(`${config.API_URL}/portfolio?stockSymbol=${symbol}`, null, {
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+    });
 
-        return data;
-    } catch (error) {
-        handleError(error);
-    }
+    return data;
 };
 
 export const portfolioDeleteAPI = async (symbol: string) => {
