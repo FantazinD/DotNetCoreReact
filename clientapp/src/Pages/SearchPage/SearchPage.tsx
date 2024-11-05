@@ -64,13 +64,16 @@ const SearchPage = ({}: IProps) => {
     const onPortfolioCreate = (e: any) => {
         e.preventDefault();
 
-        let portfolios = portfolioValues || [];
         const stockSymbol = e.target[0].value;
+        let portfolios = portfolioValues || [];
+        let updatedSearchResult = searchResult.filter((res) => res.symbol !== stockSymbol);
 
         portfolios.push({
             symbol: stockSymbol,
         });
         setPortfolioValues(portfolios);
+
+        setSearchResult(updatedSearchResult);
 
         portfolioAddAPI(stockSymbol).catch((e) => {
             portfolios = portfolios.filter((portfolio) => portfolio.symbol !== stockSymbol);
@@ -83,7 +86,7 @@ const SearchPage = ({}: IProps) => {
     return (
         <>
             <Search onSearchSubmit={onSearchSubmit} search={search} handleSearchChange={handleSearchChange} />
-            <ListPortfolio portfolioValues={portfolioValues!} onPortfolioDelete={onPortfolioDelete} />
+            <ListPortfolio portfolioValues={portfolioValues} onPortfolioDelete={onPortfolioDelete} />
             <CardList searchResults={searchResult} onPortfolioCreate={onPortfolioCreate} />
             {serverError && <div>Unable to connect to API</div>}
         </>
