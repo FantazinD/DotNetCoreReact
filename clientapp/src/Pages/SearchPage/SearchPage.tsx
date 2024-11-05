@@ -41,7 +41,8 @@ const SearchPage = ({}: IProps) => {
         if (typeof result === "string") {
             setServerError(result);
         } else if (Array.isArray(result.data)) {
-            setSearchResult(result.data);
+            const portfolios = portfolioValues?.map((portfolioValue) => portfolioValue.symbol);
+            setSearchResult(result.data.filter((res) => !portfolios?.includes(res.symbol)));
             setServerError("");
         }
     };
