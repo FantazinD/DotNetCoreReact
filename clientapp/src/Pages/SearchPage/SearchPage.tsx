@@ -65,21 +65,18 @@ const SearchPage = ({}: IProps) => {
         e.preventDefault();
 
         let portfolios = portfolioValues || [];
-        let searchList = searchResult;
         const stockSymbol = e.target[0].value;
 
         portfolios.push({
             symbol: stockSymbol,
         });
         setPortfolioValues(portfolios);
-        setSearchResult(searchList.filter((res) => res.symbol !== stockSymbol));
 
         portfolioAddAPI(stockSymbol).catch((e) => {
             portfolios = portfolios.filter((portfolio) => portfolio.symbol !== stockSymbol);
             setPortfolioValues(portfolios);
-            setSearchResult(searchList);
 
-            toast.warning("Could not add stock to portfolio!");
+            toast.error("Could not add stock to portfolio!");
         });
     };
 
