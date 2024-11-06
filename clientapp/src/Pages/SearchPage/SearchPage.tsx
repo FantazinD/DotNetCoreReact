@@ -14,7 +14,7 @@ interface IProps {}
 const SearchPage = ({}: IProps) => {
     const [search, setSearch] = useState<string>("");
     const [portfolioValues, setPortfolioValues] = useState<PortfolioGet[] | null>(null);
-    const [searchResult, setSearchResult] = useState<ICompanySearch[]>([]);
+    const [searchResult, setSearchResult] = useState<ICompanySearch[] | null>(null);
     const [serverError, setServerError] = useState<string | null>(null);
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -69,7 +69,7 @@ const SearchPage = ({}: IProps) => {
 
         const stockSymbol = e.target[0].value;
         let portfolios = portfolioValues || [];
-        let updatedSearchResult = searchResult.filter((res) => res.symbol !== stockSymbol);
+        let updatedSearchResult = searchResult!.filter((res) => res.symbol !== stockSymbol);
 
         portfolios.push({
             symbol: stockSymbol,
