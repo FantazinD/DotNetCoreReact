@@ -16,6 +16,7 @@ const SearchPage = ({}: IProps) => {
     const [portfolioValues, setPortfolioValues] = useState<PortfolioGet[] | null>(null);
     const [searchResult, setSearchResult] = useState<ICompanySearch[]>([]);
     const [serverError, setServerError] = useState<string | null>(null);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
     useEffect(() => {
         getPortfolio();
@@ -36,6 +37,7 @@ const SearchPage = ({}: IProps) => {
     };
 
     const onSearchSubmit = async (e: SyntheticEvent) => {
+        setIsLoading(true);
         e.preventDefault();
         const result = await searchCompanies(search);
         if (typeof result === "string") {
@@ -45,6 +47,7 @@ const SearchPage = ({}: IProps) => {
             setSearchResult(result.data.filter((res) => !portfolios?.includes(res.symbol)));
             setServerError("");
         }
+        setIsLoading(false);
     };
 
     const onPortfolioDelete = (e: any) => {
@@ -85,7 +88,12 @@ const SearchPage = ({}: IProps) => {
 
     return (
         <>
-            <Search onSearchSubmit={onSearchSubmit} search={search} handleSearchChange={handleSearchChange} />
+            <Search
+                onSearchSubmit={onSearchSubmit}
+                search={search}
+                handleSearchChange={handleSearchChange}
+                isLoading={isLoading}
+            />
             <ListPortfolio portfolioValues={portfolioValues} onPortfolioDelete={onPortfolioDelete} />
             <CardList searchResults={searchResult} onPortfolioCreate={onPortfolioCreate} />
             {serverError && <div>Unable to connect to API</div>}
