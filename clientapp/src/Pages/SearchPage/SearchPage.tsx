@@ -52,16 +52,17 @@ const SearchPage = ({}: IProps) => {
 
     const onPortfolioDelete = (e: any) => {
         e.preventDefault();
-        portfolioDeleteAPI(e.target[0].value)
-            .then((res: any) => {
-                if (res?.status === 200) {
-                    toast.success("Stock deleted from portfolio!");
-                    getPortfolio();
-                }
-            })
-            .catch((e) => {
-                toast.warning("Could not delete stock from portfolio!");
-            });
+
+        const stockSymbol = e.target[0].value;
+        let portfolios = portfolioValues!;
+
+        let updatedPortfolios = portfolios.filter((portfolio) => portfolio.symbol !== stockSymbol);
+        setPortfolioValues(updatedPortfolios);
+
+        portfolioDeleteAPI(e.target[0].value).catch((e) => {
+            setPortfolioValues(portfolios);
+            toast.error("Could not delete stock from portfolio!");
+        });
     };
 
     const onPortfolioCreate = (e: any) => {
