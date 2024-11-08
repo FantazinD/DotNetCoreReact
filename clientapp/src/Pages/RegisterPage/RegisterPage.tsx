@@ -4,6 +4,7 @@ import "./RegisterPage.css";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 interface IProps {}
 
@@ -20,7 +21,7 @@ const validation = Yup.object().shape({
 });
 
 const RegisterPage = ({}: IProps) => {
-    const { registerUser, isLoading } = useAuth();
+    const { registerUser, isLoading, formErrorResponse } = useAuth();
     const {
         register,
         handleSubmit,
@@ -65,6 +66,9 @@ const RegisterPage = ({}: IProps) => {
                                     {...register("email")}
                                 />
                                 {errors.email ? <p className="text-white">{errors.email.message}</p> : ""}
+                                {formErrorResponse.errors ? (
+                                    <p className="text-white">{formErrorResponse.errors.Email[0]}</p>
+                                ) : null}
                             </div>
                             <div>
                                 <label
@@ -81,6 +85,9 @@ const RegisterPage = ({}: IProps) => {
                                     {...register("userName")}
                                 />
                                 {errors.userName ? <p className="text-white">{errors.userName.message}</p> : ""}
+                                {formErrorResponse?.length > 0 && formErrorResponse[0].code.includes("UserName") ? (
+                                    <p className="text-white">{formErrorResponse[0].description}</p>
+                                ) : null}
                             </div>
                             <div>
                                 <label
@@ -97,6 +104,9 @@ const RegisterPage = ({}: IProps) => {
                                     {...register("password")}
                                 />
                                 {errors.password ? <p className="text-white">{errors.password.message}</p> : ""}
+                                {formErrorResponse?.length > 0 && formErrorResponse[0].code.includes("Password") ? (
+                                    <p className="text-white">{formErrorResponse[0].description}</p>
+                                ) : null}
                             </div>
                             <button
                                 type="submit"
