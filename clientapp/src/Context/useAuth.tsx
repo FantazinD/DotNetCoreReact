@@ -4,11 +4,13 @@ import { useNavigate } from "react-router";
 import { loginAPI, registerAPI } from "../Services/AuthService";
 import { toast } from "react-toastify";
 import axios from "axios";
+import { router } from "../Routes/Routes";
 
 type UserContextType = {
     user: UserProfile | null;
     token: string | null;
     isLoading: boolean | null;
+    formErrorResponse: any;
     registerUser: (username: string, email: string, password: string) => void;
     loginUser: (username: string, password: string) => void;
     logout: () => void;
@@ -25,6 +27,7 @@ export const UserProvider = ({ children }: Props) => {
     const [user, setUser] = useState<UserProfile | null>(null);
     const [isReady, setIsReady] = useState<boolean>(false);
     const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [formErrorResponse, setFormErrorResponse] = useState<any>(null);
 
     useEffect(() => {
         const user = localStorage.getItem("user");
@@ -42,22 +45,26 @@ export const UserProvider = ({ children }: Props) => {
         setIsLoading(true);
         await registerAPI(email, username, password)
             .then((response: any) => {
-                localStorage.setItem("token", response?.data.token);
-
-                const userObj = {
-                    userName: response?.data.userName,
-                    email: response?.data.email,
-                };
-
-                localStorage.setItem("user", JSON.stringify(userObj));
-
-                setToken(response?.data.token!);
-                setUser(userObj!);
-                toast.success("Login Success!");
-                navigate("/search");
+                if (response.data.token) {
+                    localStorage.setItem("token", response?.data.token);
+                    const userObj = {
+                        userName: response?.data.userName,
+                        email: response?.data.email,
+                    };
+                    localStorage.setItem("user", JSON.stringify(userObj));
+                    setToken(response?.data.token!);
+                    setUser(userObj!);
+                    toast.success("Login Success!");
+                    navigate("/search");
+                } else {
+                    setFormErrorResponse(response.data);
+                }
             })
             .catch((e) => toast.warning("Server error occurred"))
             .finally(() => {
+                setTimeout(() => {
+                    console.log(formErrorResponse);
+                }, 100);
                 setIsLoading(false);
             });
     };
@@ -105,7 +112,9 @@ export const UserProvider = ({ children }: Props) => {
     };
 
     return (
-        <UserContext.Provider value={{ loginUser, user, token, logout, isLoggedIn, registerUser, isLoading }}>
+        <UserContext.Provider
+            value={{ loginUser, user, token, logout, isLoggedIn, registerUser, isLoading, formErrorResponse }}
+        >
             {isReady ? children : null}
         </UserContext.Provider>
     );
