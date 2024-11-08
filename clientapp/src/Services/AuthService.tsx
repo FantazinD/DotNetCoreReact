@@ -25,7 +25,7 @@ export const registerAPI = async (email: string, username: string, password: str
         });
 
         return data;
-    } catch (error) {
-        handleError(error);
+    } catch (error: any) {
+        return error.response;
     }
 };
