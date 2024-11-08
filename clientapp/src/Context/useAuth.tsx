@@ -46,14 +46,19 @@ export const UserProvider = ({ children }: Props) => {
         await registerAPI(email, username, password)
             .then((response: any) => {
                 if (response.data.token) {
+                    setFormErrorResponse(null);
+
                     localStorage.setItem("token", response?.data.token);
+
                     const userObj = {
                         userName: response?.data.userName,
                         email: response?.data.email,
                     };
+
                     localStorage.setItem("user", JSON.stringify(userObj));
                     setToken(response?.data.token!);
                     setUser(userObj!);
+
                     toast.success("Login Success!");
                     navigate("/search");
                 } else {
@@ -62,9 +67,6 @@ export const UserProvider = ({ children }: Props) => {
             })
             .catch((e) => toast.warning("Server error occurred"))
             .finally(() => {
-                setTimeout(() => {
-                    console.log(formErrorResponse);
-                }, 100);
                 setIsLoading(false);
             });
     };
@@ -77,6 +79,8 @@ export const UserProvider = ({ children }: Props) => {
                     toast.warning("Incorrect username and/or password!");
                     return;
                 }
+
+                setFormErrorResponse(null);
 
                 localStorage.setItem("token", response?.data.token);
 
