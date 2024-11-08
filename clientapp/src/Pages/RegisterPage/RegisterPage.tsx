@@ -66,7 +66,7 @@ const RegisterPage = ({}: IProps) => {
                                     {...register("email")}
                                 />
                                 {errors.email ? <p className="text-white">{errors.email.message}</p> : ""}
-                                {formErrorResponse.errors ? (
+                                {formErrorResponse?.errors ? (
                                     <p className="text-white">{formErrorResponse.errors.Email[0]}</p>
                                 ) : null}
                             </div>
