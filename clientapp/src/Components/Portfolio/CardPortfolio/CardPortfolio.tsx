@@ -44,7 +44,7 @@ const CardPortfolio = ({ portfolioValue, onPortfolioDelete }: IProps) => {
                 {isDropdownOpen && (
                     <>
                         <div onClick={toggleDropdown} className="fixed inset-0 z-10"></div>
-                        <div className="absolute top-14 left-64 z-20 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
+                        <div className="absolute top-14 left-54 md:left-64 z-20 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
                             <ul className="py-2" aria-labelledby="dropdownButton">
                                 <li>
                                     <a
