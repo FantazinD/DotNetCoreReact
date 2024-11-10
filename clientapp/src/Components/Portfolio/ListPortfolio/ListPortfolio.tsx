@@ -7,7 +7,7 @@ import Spinner from "../../Spinner/Spinner";
 
 interface IProps {
     portfolioValues: PortfolioGet[] | null;
-    onPortfolioDelete: (e: SyntheticEvent) => void;
+    onPortfolioDelete: (stockSymbol: string) => void;
 }
 
 const ListPortfolio = ({ portfolioValues, onPortfolioDelete }: IProps) => {

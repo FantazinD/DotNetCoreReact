@@ -50,16 +50,13 @@ const SearchPage = ({}: IProps) => {
         setIsLoading(false);
     };
 
-    const onPortfolioDelete = (e: any) => {
-        e.preventDefault();
-
-        const stockSymbol = e.target[0].value;
+    const onPortfolioDelete = (stockSymbol: string) => {
         let portfolios = portfolioValues!;
 
         let updatedPortfolios = portfolios.filter((portfolio) => portfolio.symbol !== stockSymbol);
         setPortfolioValues(updatedPortfolios);
 
-        portfolioDeleteAPI(e.target[0].value).catch((e) => {
+        portfolioDeleteAPI(stockSymbol).catch((e) => {
             setPortfolioValues(portfolios);
             toast.error("Could not delete stock from portfolio!");
         });
