@@ -1,4 +1,4 @@
-import { SyntheticEvent, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { PortfolioGet } from "../../../Models/Portfolio";
 import ConfirmationModal from "../../ConfirmationModal/ConfirmationModal";
@@ -36,7 +36,6 @@ const CardPortfolio = ({ portfolioValue, onPortfolioDelete }: IProps) => {
     useEffect(() => {
         document.addEventListener("mousedown", handleClickOutside);
 
-        // Cleanup the event listener when the component unmounts
         return () => {
             document.removeEventListener("mousedown", handleClickOutside);
         };
