@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { SyntheticEvent, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { PortfolioGet } from "../../../Models/Portfolio";
 import ConfirmationModal from "../../ConfirmationModal/ConfirmationModal";
@@ -12,19 +12,41 @@ const CardPortfolio = ({ portfolioValue, onPortfolioDelete }: IProps) => {
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
     const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
 
-    const toggleDropdown = () => {
-        setIsDropdownOpen(!isDropdownOpen);
-    };
+    const dropdownRef = useRef<HTMLDivElement | null>(null);
+    const buttonRef = useRef<HTMLButtonElement | null>(null);
+
+    const toggleDropdown = () => setIsDropdownOpen((prevState: boolean) => !prevState);
 
     const handleDeleteClick = () => {
         setIsDropdownOpen(false);
         setIsModalOpen(true);
     };
 
+    const handleClickOutside = (event: any) => {
+        if (
+            dropdownRef.current &&
+            !dropdownRef.current.contains(event.target as Node) &&
+            buttonRef.current &&
+            !buttonRef.current.contains(event.target as Node)
+        ) {
+            setIsDropdownOpen(false);
+        }
+    };
+
+    useEffect(() => {
+        document.addEventListener("mousedown", handleClickOutside);
+
+        // Cleanup the event listener when the component unmounts
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, []);
+
     return (
         <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow">
             <div className="flex justify-end px-4 pt-4 relative z-0 bg-lightGreen">
                 <button
+                    ref={buttonRef}
                     id="dropdownButton"
                     onClick={toggleDropdown}
                     className="inline-block text-gray-500 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg text-sm p-1.5"
@@ -42,7 +64,10 @@ const CardPortfolio = ({ portfolioValue, onPortfolioDelete }: IProps) => {
                     </svg>
                 </button>
                 {isDropdownOpen && (
-                    <div className="absolute top-12 z-10 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
+                    <div
+                        ref={dropdownRef}
+                        className="absolute top-12 z-10 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow w-44"
+                    >
                         <ul className="py-2" aria-labelledby="dropdownButton">
                             <li>
                                 <a
