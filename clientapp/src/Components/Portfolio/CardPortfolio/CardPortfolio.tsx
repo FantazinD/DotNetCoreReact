@@ -23,7 +23,7 @@ const CardPortfolio = ({ portfolioValue, onPortfolioDelete }: IProps) => {
 
     return (
         <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow">
-            <div className="flex justify-end px-4 pt-4 relative z-0">
+            <div className="flex justify-end px-4 pt-4 relative z-0 bg-lightGreen">
                 <button
                     id="dropdownButton"
                     onClick={toggleDropdown}
@@ -42,21 +42,18 @@ const CardPortfolio = ({ portfolioValue, onPortfolioDelete }: IProps) => {
                     </svg>
                 </button>
                 {isDropdownOpen && (
-                    <>
-                        <div onClick={toggleDropdown} className="fixed inset-0 z-10"></div>
-                        <div className="absolute top-14 left-54 md:left-64 z-20 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
-                            <ul className="py-2" aria-labelledby="dropdownButton">
-                                <li>
-                                    <a
-                                        onClick={handleDeleteClick}
-                                        className="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100"
-                                    >
-                                        Delete
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </>
+                    <div className="absolute top-12 z-10 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
+                        <ul className="py-2" aria-labelledby="dropdownButton">
+                            <li>
+                                <a
+                                    onClick={handleDeleteClick}
+                                    className="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100"
+                                >
+                                    Delete
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 )}
             </div>
             <Link
