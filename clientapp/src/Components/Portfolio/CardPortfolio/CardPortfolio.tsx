@@ -43,7 +43,7 @@ const CardPortfolio = ({ portfolioValue, onPortfolioDelete }: IProps) => {
 
     return (
         <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow">
-            <div className="flex justify-end px-4 pt-4 relative z-0 bg-lightGreen">
+            <div className="flex justify-end px-4 pt-4 relative z-0">
                 <button
                     ref={buttonRef}
                     id="dropdownButton"
