@@ -4,7 +4,6 @@ import { useNavigate } from "react-router";
 import { loginAPI, registerAPI } from "../Services/AuthService";
 import { toast } from "react-toastify";
 import axios from "axios";
-import { router } from "../Routes/Routes";
 
 type UserContextType = {
     user: UserProfile | null;

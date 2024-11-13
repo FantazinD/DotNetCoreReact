@@ -4,7 +4,6 @@ import "./RegisterPage.css";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
 
 interface IProps {}
 

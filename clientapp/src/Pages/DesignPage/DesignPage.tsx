@@ -2,7 +2,6 @@ import RatioList from "../../Components/RatioList/RatioList";
 import Table from "../../Components/Table/Table";
 import { TestDataCompany } from "../../Components/Table/testData";
 import "./DesignPage.css";
-import React from "react";
 
 interface IProps {}
 
