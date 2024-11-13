@@ -79,7 +79,7 @@ const CompanyProfile = ({}: IProps) => {
     return (
         <>
             {companyData ? (
-                <div>
+                <div className="w-full pr-4">
                     <RatioList config={tableConfig} data={companyData} />
                     <StockComment stockSymbol={ticker} />
                 </div>
