@@ -11,7 +11,7 @@ interface IProps {
 
 const CardList: React.FC<IProps> = ({ searchResults, onPortfolioCreate }: IProps): JSX.Element => {
     return (
-        <div>
+        <>
             {searchResults && searchResults.length > 0 ? (
                 <>
                     {searchResults.map((result: ICompanySearch) => {
@@ -28,7 +28,7 @@ const CardList: React.FC<IProps> = ({ searchResults, onPortfolioCreate }: IProps
             ) : searchResults && searchResults.length == 0 ? (
                 <p className="mb-3 mt-10 text-xl font-semibold text-center md:text-xl">No results!</p>
             ) : null}
-        </div>
+        </>
     );
 };
 
