@@ -26,7 +26,7 @@ const CompanyPage = ({}: IProps) => {
     return (
         <>
             {company ? (
-                <div className="flex w-full relative justify-center items-center min-h-screen bg-lightGreen">
+                <div className="flex w-full relative justify-center items-center min-h-screen">
                     <Sidebar />
                     <CompanyDashboard ticker={ticker!}>
                         <Tile title="Company Name" content={company.companyName} />
