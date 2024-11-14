@@ -16,9 +16,9 @@ const ShimmerComment = ({}: IProps) => {
                         </div>
                     </div>
                 </div>
-                <p className="-mt-4 text-gray-500">
+                <div className="-mt-4 text-gray-500">
                     <ShimmerText mode="light" line={3} />
-                </p>
+                </div>
             </div>
             <div className="relative grid grid-cols-1 gap-4 p-4 mb-8 w-full border rounded-lg bg-white shadow-lg">
                 <div className="relative flex gap-4">
@@ -30,9 +30,9 @@ const ShimmerComment = ({}: IProps) => {
                         </div>
                     </div>
                 </div>
-                <p className="-mt-4 text-gray-500">
+                <div className="-mt-4 text-gray-500">
                     <ShimmerText mode="light" line={3} />
-                </p>
+                </div>
             </div>
         </div>
     );
