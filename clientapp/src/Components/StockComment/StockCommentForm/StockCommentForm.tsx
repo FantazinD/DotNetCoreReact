@@ -26,7 +26,7 @@ const StockCommentForm = ({ stockSymbol, handleComment }: IProps) => {
     } = useForm<CommentFormInputs>({ resolver: yupResolver(validation) });
 
     return (
-        <form className="mt-4 ml-4 mb-32 lg:mb-12 pb-12" onSubmit={handleSubmit(handleComment)}>
+        <form className="mt-4 ml-4 mb-32 lg:mb-12 pb-12 w-full" onSubmit={handleSubmit(handleComment)}>
             <input
                 type="text"
                 id="title"

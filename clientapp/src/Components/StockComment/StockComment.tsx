@@ -49,7 +49,7 @@ const StockComment = ({ stockSymbol }: IProps) => {
     };
 
     return (
-        <div className="flex flex-col">
+        <div className="flex flex-col mr-4">
             {isLoading ? <ShimmerComment></ShimmerComment> : <StockCommentList comments={comments!} />}
             <StockCommentForm stockSymbol={stockSymbol} handleComment={handleComment} />
         </div>

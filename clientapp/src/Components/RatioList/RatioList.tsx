@@ -9,7 +9,7 @@ interface IProps {
 const RatioList = ({ config, data }: IProps) => {
     const renderedRows = config.map((row: any) => {
         return (
-            <li key={uuidv4()} className="py-6 sm:py-6">
+            <li key={uuidv4()} className="py-6">
                 <div className="flex items-center space-x-4">
                     <div className="flex-1 min-w-0">
                         <p className="text-sm font-medium text-gray-900 truncate">{row.label}</p>
