@@ -57,7 +57,13 @@ const CashFlowStatement = ({}: IProps) => {
         fetchCashFlow();
     }, []);
 
-    return cashFlowData ? <Table config={tableConfig} data={cashFlowData}></Table> : <Spinner />;
+    return cashFlowData ? (
+        <div className="pr-4">
+            <Table config={tableConfig} data={cashFlowData}></Table>
+        </div>
+    ) : (
+        <Spinner />
+    );
 };
 
 export default CashFlowStatement;

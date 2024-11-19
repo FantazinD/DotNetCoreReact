@@ -27,7 +27,7 @@ const Table = ({ config, data }: IProps) => {
 
     return (
         <div className="bg-white shadow rounded-lg ml-4 mt-4 mb-4 p-4 sm:p-6 h-full">
-            <table className="min-w-full divide-y divide-gray-200 m-5">
+            <table className="min-w-full divide-y divide-gray-200 mt-5 mb-5">
                 <thead className="bg-gray-50">{renderedHeaders}</thead>
                 <tbody>{renderedRows}</tbody>
             </table>
