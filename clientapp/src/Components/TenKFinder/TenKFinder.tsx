@@ -22,7 +22,7 @@ const TenKFinder = ({ ticker }: IProps) => {
     }, [ticker]);
 
     return (
-        <div className="inline-flex rounded-md shadow-sm m-4" role="group">
+        <div className="inline-flex rounded-md shadow-sm m-4 gap-2" role="group">
             {companyData ? (
                 companyData?.slice(0, 5).map((companyDatum: ICompanyTenK) => {
                     return <TenKFinderItem key={uuidv4()} tenK={companyDatum} />;
