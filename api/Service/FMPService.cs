@@ -6,7 +6,6 @@ using Newtonsoft.Json;
 
 namespace api.Service
 {
-    // FMP = Financial Modeling Prep
     public class FMPService(HttpClient httpClient, IConfiguration config) : IFMPService
     {
         private readonly HttpClient _httpClient = httpClient;
