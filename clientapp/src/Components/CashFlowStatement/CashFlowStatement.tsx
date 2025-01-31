@@ -1,11 +1,11 @@
+import { formatLargeMonetaryNumber } from "../../Helpers/NumberFormatting";
 import { useOutletContext } from "react-router-dom";
 import { ICompanyCashFlow } from "../../company";
-import "./CashFlowStatement.css";
 import { useEffect, useState } from "react";
+import Spinner from "../Spinner/Spinner";
 import { getCashFlow } from "../../api";
 import Table from "../Table/Table";
-import Spinner from "../Spinner/Spinner";
-import { formatLargeMonetaryNumber } from "../../Helpers/NumberFormatting";
+import "./CashFlowStatement.css";
 
 interface IProps {}
 
