@@ -1,6 +1,6 @@
+import { Outlet } from "react-router-dom";
 import { ReactNode } from "react";
 import "./CompanyDashboard.css";
-import { Outlet } from "react-router-dom";
 
 interface IProps {
     children: ReactNode;
