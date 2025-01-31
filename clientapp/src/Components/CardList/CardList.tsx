@@ -1,8 +1,8 @@
 import React, { SyntheticEvent } from "react";
-import "./CardList.css";
-import Card from "../Card/Card";
 import { ICompanySearch } from "../../company";
 import { v4 as uuidv4 } from "uuid";
+import Card from "../Card/Card";
+import "./CardList.css";
 
 interface IProps {
     searchResults: ICompanySearch[] | null;
