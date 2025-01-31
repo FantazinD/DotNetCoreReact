@@ -1,8 +1,8 @@
 import React, { SyntheticEvent } from "react";
-import "./Card.css";
 import { ICompanySearch } from "../../company";
 import AddPortfolio from "../Portfolio/AddPortfolio/AddPortfolio";
 import { Link } from "react-router-dom";
+import "./Card.css";
 
 interface IProps {
     id: string;
