@@ -1,12 +1,12 @@
-import { useOutletContext } from "react-router-dom";
-import { ICompanyKeyMetrics } from "../../company";
-import "./CompanyProfile.css";
-import { useEffect, useState } from "react";
-import { getKeyMetrics } from "../../api";
-import RatioList from "../RatioList/RatioList";
-import Spinner from "../Spinner/Spinner";
 import { formatLargeNonMonetaryNumber, formatRatio } from "../../Helpers/NumberFormatting";
 import StockComment from "../StockComment/StockComment";
+import { useOutletContext } from "react-router-dom";
+import { ICompanyKeyMetrics } from "../../company";
+import RatioList from "../RatioList/RatioList";
+import { useEffect, useState } from "react";
+import { getKeyMetrics } from "../../api";
+import Spinner from "../Spinner/Spinner";
+import "./CompanyProfile.css";
 
 interface IProps {}
 
