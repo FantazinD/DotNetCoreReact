@@ -1,8 +1,8 @@
-import "./ListPortfolio.css";
 import CardPortfolio from "../CardPortfolio/CardPortfolio";
 import { PortfolioGet } from "../../../Models/Portfolio";
-import { v4 as uuidv4 } from "uuid";
 import Spinner from "../../Spinner/Spinner";
+import { v4 as uuidv4 } from "uuid";
+import "./ListPortfolio.css";
 
 interface IProps {
     portfolioValues: PortfolioGet[] | null;
