@@ -1,10 +1,10 @@
-import { useOutletContext } from "react-router-dom";
-import "./HistoricalDividend.css";
-import { useEffect, useState } from "react";
 import SimpleLineChart from "../SimpleLineChart/SimpleLineChart";
-import { IDividend } from "../../company";
+import { useOutletContext } from "react-router-dom";
 import { getHistoricalDividend } from "../../api";
+import { useEffect, useState } from "react";
+import { IDividend } from "../../company";
 import Spinner from "../Spinner/Spinner";
+import "./HistoricalDividend.css";
 
 interface IProps {}
 
