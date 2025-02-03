@@ -1,4 +1,5 @@
 import { SyntheticEvent } from "react";
+import "./AddPortfolio.css";
 
 interface IProps {
     onPortfolioCreate: (e: SyntheticEvent) => void;
