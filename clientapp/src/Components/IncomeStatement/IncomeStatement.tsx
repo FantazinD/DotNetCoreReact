@@ -1,11 +1,11 @@
-import { useOutletContext } from "react-router-dom";
-import { ICompanyIncomeStatement } from "../../company";
-import "./IncomeStatement.css";
-import { useEffect, useState } from "react";
-import { getIncomeStatement } from "../../api";
-import Table from "../Table/Table";
-import Spinner from "../Spinner/Spinner";
 import { formatLargeMonetaryNumber, formatRatio } from "../../Helpers/NumberFormatting";
+import { ICompanyIncomeStatement } from "../../company";
+import { useOutletContext } from "react-router-dom";
+import { getIncomeStatement } from "../../api";
+import { useEffect, useState } from "react";
+import Spinner from "../Spinner/Spinner";
+import Table from "../Table/Table";
+import "./IncomeStatement.css";
 
 interface IProps {}
 
