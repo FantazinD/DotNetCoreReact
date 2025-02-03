@@ -1,7 +1,8 @@
+import ConfirmationModal from "../../ConfirmationModal/ConfirmationModal";
+import { PortfolioGet } from "../../../Models/Portfolio";
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { PortfolioGet } from "../../../Models/Portfolio";
-import ConfirmationModal from "../../ConfirmationModal/ConfirmationModal";
+import "./CardPortfolio.css";
 
 interface IProps {
     portfolioValue: PortfolioGet;
