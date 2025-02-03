@@ -1,7 +1,7 @@
 import { useAuth } from "../../Context/useAuth";
-import "./Navbar.css";
-import logo from "./logo.png";
 import { Link } from "react-router-dom";
+import logo from "./logo.png";
+import "./Navbar.css";
 
 interface IProps {}
 
