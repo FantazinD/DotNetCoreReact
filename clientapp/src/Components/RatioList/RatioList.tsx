@@ -1,5 +1,5 @@
-import "./RatioList.css";
 import { v4 as uuidv4 } from "uuid";
+import "./RatioList.css";
 
 interface IProps {
     config: any;
