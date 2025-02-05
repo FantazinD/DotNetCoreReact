@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom";
 import { FaHome, FaList, FaMoneyBill } from "react-icons/fa";
 import { LuFileSpreadsheet } from "react-icons/lu";
 import { SlGraph } from "react-icons/sl";
+import { Link } from "react-router-dom";
 import "./Sidebar.css";
 
 interface IProps {}
