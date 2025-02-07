@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
 import { ICompanyTenK } from "../../../company";
+import { Link } from "react-router-dom";
 import "./TenKFinderItem.css";
 
 interface IProps {
