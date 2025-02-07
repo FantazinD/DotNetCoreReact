@@ -1,7 +1,7 @@
-import { CommentGet } from "../../Models/Comment";
-import "./StockCommentList.css";
 import StockCommentListItem from "./StockCommentListItem/StockCommentListItem";
+import { CommentGet } from "../../Models/Comment";
 import { v4 as uuidv4 } from "uuid";
+import "./StockCommentList.css";
 
 interface IProps {
     comments: CommentGet[];
