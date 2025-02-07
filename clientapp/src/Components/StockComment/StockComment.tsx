@@ -1,11 +1,11 @@
-import "./StockComment.css";
-import { useEffect, useState } from "react";
-import StockCommentForm from "./StockCommentForm/StockCommentForm";
 import { commentGetAPI, commentPostAPI } from "../../Services/CommentService";
-import { toast } from "react-toastify";
-import { CommentGet } from "../../Models/Comment";
 import StockCommentList from "../StockCommentList/StockCommentList";
+import StockCommentForm from "./StockCommentForm/StockCommentForm";
 import ShimmerComment from "./ShimmerComment/ShimmerComment";
+import { CommentGet } from "../../Models/Comment";
+import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
+import "./StockComment.css";
 
 interface IProps {
     stockSymbol: string;
