@@ -1,10 +1,10 @@
-import { getTenK } from "../../api";
-import { ICompanyTenK } from "../../company";
-import "./TenKFinder.css";
-import { useEffect, useState } from "react";
 import TenKFinderItem from "./TenKFinderItem/TenKFinderItem";
+import { ICompanyTenK } from "../../company";
+import { useEffect, useState } from "react";
 import Spinner from "../Spinner/Spinner";
 import { v4 as uuidv4 } from "uuid";
+import { getTenK } from "../../api";
+import "./TenKFinder.css";
 
 interface IProps {
     ticker: string;
