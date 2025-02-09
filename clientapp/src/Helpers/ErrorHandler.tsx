@@ -1,5 +1,5 @@
-import axios from "axios";
 import { toast } from "react-toastify";
+import axios from "axios";
 
 export const handleError = (error: any) => {
     if (axios.isAxiosError(error)) {
