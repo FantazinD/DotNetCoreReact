@@ -1,12 +1,12 @@
+import CompanyDashboard from "../../Components/CompanyDashboard/CompanyDashboard";
+import TenKFinder from "../../Components/TenKFinder/TenKFinder";
+import Sidebar from "../../Components/Sidebar/Sidebar";
+import Spinner from "../../Components/Spinner/Spinner";
+import { ICompanyProfile } from "../../company";
+import Tile from "../../Components/Tile/Tile";
+import { getCompanyProfile } from "../../api";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { ICompanyProfile } from "../../company";
-import { getCompanyProfile } from "../../api";
-import Sidebar from "../../Components/Sidebar/Sidebar";
-import CompanyDashboard from "../../Components/CompanyDashboard/CompanyDashboard";
-import Tile from "../../Components/Tile/Tile";
-import Spinner from "../../Components/Spinner/Spinner";
-import TenKFinder from "../../Components/TenKFinder/TenKFinder";
 
 interface IProps {}
 
