@@ -1,5 +1,5 @@
-import "./HomePage.css";
 import Hero from "../../Components/Hero/Hero";
+import "./HomePage.css";
 
 interface IProps {}
 
