@@ -1,13 +1,13 @@
-import { ChangeEvent, SyntheticEvent, useEffect, useState } from "react";
-import "./SearchPage.css";
-import { ICompanySearch } from "../../company";
-import { searchCompanies } from "../../api";
-import Search from "../../Components/Search/Search";
+import { portfolioAddAPI, portfolioDeleteAPI, portfolioGetAPI } from "../../Services/PortfolioService";
 import ListPortfolio from "../../Components/Portfolio/ListPortfolio/ListPortfolio";
+import { ChangeEvent, SyntheticEvent, useEffect, useState } from "react";
 import CardList from "../../Components/CardList/CardList";
 import { PortfolioGet } from "../../Models/Portfolio";
-import { portfolioAddAPI, portfolioDeleteAPI, portfolioGetAPI } from "../../Services/PortfolioService";
+import Search from "../../Components/Search/Search";
+import { ICompanySearch } from "../../company";
+import { searchCompanies } from "../../api";
 import { toast } from "react-toastify";
+import "./SearchPage.css";
 
 interface IProps {}
 
