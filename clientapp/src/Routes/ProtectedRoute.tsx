@@ -1,6 +1,6 @@
-import { ReactNode } from "react";
 import { Navigate, useLocation } from "react-router";
 import { useAuth } from "../Context/useAuth";
+import { ReactNode } from "react";
 
 interface IProps {
     children: ReactNode;
