@@ -1,7 +1,7 @@
-import axios from "axios";
 import { handleError } from "../Helpers/ErrorHandler";
 import { UserProfileToken } from "../Models/User";
 import config from "../config.json";
+import axios from "axios";
 
 export const loginAPI = async (username: string, password: string) => {
     try {
