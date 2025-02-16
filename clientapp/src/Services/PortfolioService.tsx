@@ -1,7 +1,7 @@
-import axios from "axios";
-import { handleError } from "../Helpers/ErrorHandler";
 import { PortfolioGet, PortfolioPost } from "../Models/Portfolio";
+import { handleError } from "../Helpers/ErrorHandler";
 import config from "../config.json";
+import axios from "axios";
 
 export const portfolioGetAPI = async () => {
     try {
