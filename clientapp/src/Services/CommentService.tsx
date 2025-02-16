@@ -1,7 +1,7 @@
-import axios from "axios";
 import { CommentGet, CommentPost } from "../Models/Comment";
 import { handleError } from "../Helpers/ErrorHandler";
 import config from "../config.json";
+import axios from "axios";
 
 export const commentPostAPI = async (title: string, content: string, stockSymbol: string) => {
     try {
