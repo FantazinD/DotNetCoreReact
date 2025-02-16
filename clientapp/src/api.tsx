@@ -1,3 +1,5 @@
+import { handleError } from "./Helpers/ErrorHandler";
+import config from "./config.json";
 import axios from "axios";
 import {
     ICompanyBalanceSheet,
@@ -9,8 +11,6 @@ import {
     ICompanySearch,
     ICompanyTenK,
 } from "./company";
-import config from "./config.json";
-import { handleError } from "./Helpers/ErrorHandler";
 
 interface ISearchResponse {
     data: ICompanySearch[];
