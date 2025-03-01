@@ -2,11 +2,11 @@ import { handleError } from "./Helpers/ErrorHandler";
 import config from "./config.json";
 import axios from "axios";
 import {
-    ICompanyBalanceSheet,
-    ICompanyCashFlow,
     ICompanyHistoricalDividend,
     ICompanyIncomeStatement,
+    ICompanyBalanceSheet,
     ICompanyKeyMetrics,
+    ICompanyCashFlow,
     ICompanyProfile,
     ICompanySearch,
     ICompanyTenK,
