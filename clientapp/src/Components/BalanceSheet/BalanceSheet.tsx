@@ -1,10 +1,10 @@
-import { useOutletContext } from "react-router-dom";
+import { formatLargeMonetaryNumber } from "../../Helpers/NumberFormatting";
 import { ICompanyBalanceSheet } from "../../company";
+import { useOutletContext } from "react-router-dom";
+import RatioList from "../RatioList/RatioList";
 import { useEffect, useState } from "react";
 import { getBalanceSheet } from "../../api";
-import RatioList from "../RatioList/RatioList";
 import Spinner from "../Spinner/Spinner";
-import { formatLargeMonetaryNumber } from "../../Helpers/NumberFormatting";
 import "./BalanceSheet.css";
 
 interface IProps {}
